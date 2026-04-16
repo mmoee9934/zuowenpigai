@@ -557,11 +557,11 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 .essay-camera-strip-copy{font-size:12px;line-height:1.6;color:rgba(255,255,255,.72)}
 .essay-camera-strip-btn{padding:10px 16px;border:none;border-radius:14px;background:#19e0c9;color:#08323a;font-size:13px;font-weight:800;cursor:pointer}
 .essay-preview-page{background:#0a0f16;color:#fff}
-.essay-preview-shell{width:390px;max-width:100%;min-height:100vh;margin:0 auto;padding:16px 16px 28px}
+.essay-preview-shell{width:390px;max-width:100%;min-height:100vh;margin:0 auto;padding:16px 16px 28px;background:#0a0f16}
 .essay-preview-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .essay-preview-title{font-size:18px;font-weight:800}
 .essay-preview-sub{font-size:12px;color:#91a0b5;margin-top:4px}
-.essay-preview-board{background:linear-gradient(180deg,#101826,#0d1420);border-radius:28px;padding:18px;border:1px solid rgba(255,255,255,.06);box-shadow:0 22px 36px rgba(0,0,0,.28)}
+.essay-preview-board{background:#0a0f16;border-radius:28px;padding:18px;border:1px solid rgba(255,255,255,.06);box-shadow:0 22px 36px rgba(0,0,0,.28)}
 .essay-preview-image{height:458px;border-radius:22px;background:linear-gradient(180deg,#f5ecdc,#fffefa);position:relative;overflow:hidden;padding:18px 16px}
 .essay-preview-image::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(252,252,252,.08),rgba(0,0,0,.02))}
 .essay-preview-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(198,146,97,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(198,146,97,.08) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
@@ -573,15 +573,20 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 .essay-preview-badge{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);padding:8px 14px;border-radius:999px;background:rgba(7,10,15,.74);color:#fff;font-size:13px;font-weight:700;backdrop-filter:blur(8px)}
 .essay-preview-main-image{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:1;background:#f3ebdc}
 .essay-preview-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:0 36px;text-align:center;color:#6b5c46;font-size:15px;line-height:1.8;z-index:0}
-.essay-preview-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px}
+.essay-preview-meta{display:flex;align-items:center;justify-content:flex-end;gap:12px;margin-top:16px}
 .essay-preview-meta-copy{font-size:12px;line-height:1.7;color:#a9b5c8}
 .essay-thumb-row{display:flex;gap:10px;margin-top:18px;overflow-x:auto;padding-bottom:2px}
-.essay-thumb-card{min-width:104px;height:132px;border-radius:18px;background:linear-gradient(180deg,#f5ecdc,#fffefa);padding:8px;position:relative;box-shadow:0 10px 24px rgba(0,0,0,.22);border:none;cursor:pointer}
+.essay-thumb-card{min-width:112px;height:144px;border-radius:18px;background:#eef2f6;padding:0;position:relative;box-shadow:0 10px 24px rgba(0,0,0,.22);border:none;cursor:pointer;overflow:hidden;flex-shrink:0}
 .essay-thumb-card.active{outline:2px solid #19e0c9}
-.essay-thumb-shot{width:100%;height:86px;border-radius:12px;overflow:hidden;background:#f0e6d2;display:flex;align-items:center;justify-content:center;color:#7d6b50;font-size:12px}
+.essay-thumb-card.draggable{cursor:grab}
+.essay-thumb-card.dragging{opacity:.96;box-shadow:0 18px 38px rgba(0,0,0,.34);cursor:grabbing}
+.essay-thumb-placeholder{min-width:112px;height:144px;border-radius:18px;border:2px dashed rgba(25,224,201,.6);background:rgba(255,255,255,.08);flex-shrink:0}
+.essay-thumb-head{height:32px;padding:10px 10px 0;background:#fff;display:flex;align-items:flex-start;justify-content:flex-start}
+.essay-thumb-shot{width:100%;height:84px;overflow:hidden;background:#f0e6d2;display:flex;align-items:center;justify-content:center;color:#7d6b50;font-size:12px}
 .essay-thumb-shot img{width:100%;height:100%;object-fit:cover;display:block}
-.essay-thumb-label{font-size:11px;font-weight:800;color:#0ad1bb;margin-top:8px;text-align:left}
-.essay-thumb-sub{font-size:10px;color:#96a5b7;margin-top:4px;text-align:left}
+.essay-thumb-label{font-size:11px;font-weight:800;color:#111;text-align:left}
+.essay-thumb-footer{min-height:28px;padding:6px 10px 8px;background:#fff}
+.essay-thumb-sub{font-size:10px;color:#96a5b7;text-align:left}
 .essay-preview-actions{display:flex;gap:12px;margin-top:18px}
 .essay-preview-secondary{flex:1;border:none;border-radius:18px;background:rgba(255,255,255,.08);color:#fff;font-size:14px;font-weight:700;padding:14px 16px;cursor:pointer}
 .essay-preview-primary{flex:1.25;border:none;border-radius:18px;background:linear-gradient(135deg,#19e0c9,#14c9db);color:#08323a;font-size:15px;font-weight:800;padding:14px 16px;cursor:pointer;box-shadow:0 14px 28px rgba(20,201,219,.26)}
@@ -600,16 +605,20 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 .essay-loading-progressbar{height:10px;border-radius:999px;background:rgba(255,255,255,.12);margin-top:18px;overflow:hidden}
 .essay-loading-progressbar .fill{height:100%;width:48%;border-radius:999px;background:linear-gradient(90deg,#19e0c9,#14c9db,#b5ff68);animation:essayProgress 1.8s ease-in-out infinite}
 .essay-loading-note{font-size:11px;color:rgba(255,255,255,.5);margin-top:12px}
-.essay-review-page{background:#f5f7fa;color:#1a1a1a}
+.essay-review-page{background:
+  radial-gradient(circle at 50% -4%,rgba(149,223,255,.36),transparent 24%),
+  radial-gradient(circle at 10% 8%,rgba(208,244,255,.56),transparent 20%),
+  radial-gradient(circle at 90% 10%,rgba(191,231,255,.42),transparent 20%),
+  linear-gradient(180deg,#eef9ff 0%,#f7fcff 26%,#fbfeff 56%,#ffffff 100%);color:#1a1a1a}
 .essay-review-shell{width:390px;max-width:100%;min-height:100vh;margin:0 auto;padding:0 0 112px}
-.essay-review-topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 10px;background:#fff;position:sticky;top:0;z-index:4;box-shadow:0 10px 24px rgba(15,23,42,.04)}
-.essay-review-back,.essay-review-help{width:34px;height:34px;border:none;border-radius:50%;background:#f2f5f8;color:#10233a;font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.essay-review-topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 10px;background:rgba(249,253,255,.72);position:sticky;top:0;z-index:4;backdrop-filter:blur(12px);box-shadow:0 8px 24px rgba(108,166,211,.08)}
+.essay-review-back,.essay-review-help{width:34px;height:34px;border:none;border-radius:50%;background:linear-gradient(180deg,#ffffff,#f2f9ff);color:#13314d;font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(198,224,243,.92),0 8px 18px rgba(133,183,218,.12)}
 .essay-review-topmeta{text-align:center}
 .essay-review-topmeta .title{font-size:18px;font-weight:900}
-.essay-review-topmeta .sub{font-size:12px;color:#8ca0b3;margin-top:3px}
-.essay-review-tabs{display:flex;gap:8px;padding:12px 16px 8px;background:#fff}
-.essay-review-tab{flex:1;border:none;border-radius:999px;background:#eef2f6;color:#6b7f92;font-size:14px;font-weight:800;padding:11px 12px;cursor:pointer}
-.essay-review-tab.active{background:linear-gradient(135deg,#19e0c9,#14c9db);color:#08323a}
+.essay-review-topmeta .sub{font-size:12px;color:#7b99b4;margin-top:3px}
+.essay-review-tabs{display:flex;gap:8px;padding:12px 16px 8px;background:transparent}
+.essay-review-tab{flex:1;border:none;border-radius:999px;background:rgba(222,239,249,.9);color:#5b7792;font-size:14px;font-weight:800;padding:11px 12px;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(196,223,243,.9)}
+.essay-review-tab.active{background:linear-gradient(135deg,#ffffff,#f7fcff);color:#12375a;box-shadow:0 10px 22px rgba(138,193,229,.18),inset 0 0 0 1px rgba(201,227,246,.9)}
 .essay-review-card{margin:14px 16px 0;background:#fff;border-radius:26px;padding:18px 16px;box-shadow:0 14px 34px rgba(15,23,42,.08)}
 .essay-review-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
 .essay-review-title{font-size:29px;font-weight:900;line-height:1.15;color:#18212d}
@@ -621,24 +630,24 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 .essay-review-legend .add{background:#2f80ed}
 .essay-review-legend .fix{background:#ff6b57}
 .essay-review-legend .point{background:#a1a1aa}
-.essay-review-body{margin:14px 16px 0;background:#fff;border-radius:26px;padding:18px 16px 18px 18px;box-shadow:0 14px 34px rgba(15,23,42,.06)}
+.essay-review-body{margin:14px 16px 0;background:rgba(255,255,255,.96);border-radius:28px;padding:18px 16px 18px 18px;box-shadow:0 18px 36px rgba(130,181,218,.12);border:1px solid rgba(225,240,250,.9)}
 .essay-review-paragraph{font-size:17px;line-height:2;color:#202938}
 .essay-review-paragraph + .essay-review-paragraph{margin-top:18px}
-.essay-idx{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#e5e7eb;color:#666;font-size:11px;font-weight:800;margin-right:4px;vertical-align:2px}
-.essay-highlight-blue{color:#2f80ed;font-weight:700}
-.essay-highlight-red{color:#ff6b57;font-weight:700}
+.essay-idx{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#edf6fd;color:#4b6f8f;font-size:11px;font-weight:800;margin-right:4px;vertical-align:2px;box-shadow:inset 0 0 0 1px rgba(196,222,242,.92)}
+.essay-highlight-blue{color:#1c7bdb;font-weight:700}
+.essay-highlight-red{color:#ff7467;font-weight:700}
 .essay-full-panel{position:relative;padding-left:56px}
-.essay-full-rail{position:absolute;left:22px;top:8px;bottom:14px;border-left:2px dashed #6fe5d1}
-.essay-full-anchor{position:absolute;left:0;width:44px;padding:7px 0;border-radius:14px;background:#eefcf9;color:#097c6d;font-size:12px;font-weight:800;text-align:center}
+.essay-full-rail{position:absolute;left:22px;top:8px;bottom:14px;border-left:2px dashed #8fd6ff}
+.essay-full-anchor{position:absolute;left:0;width:44px;padding:7px 0;border-radius:14px;background:linear-gradient(180deg,#eef8ff,#f9fcff);color:#2472b3;font-size:12px;font-weight:800;text-align:center;box-shadow:inset 0 0 0 1px rgba(195,223,245,.92)}
 .essay-full-anchor.a1{top:34px}
 .essay-full-anchor.a2{top:220px}
 .essay-full-anchor.a3{bottom:18px}
 .essay-review-feedback{display:flex;gap:10px;margin-top:18px}
-.essay-review-feedback button{width:42px;height:42px;border:none;border-radius:14px;background:#f2f5f8;color:#607489;font-size:18px;cursor:pointer}
-.essay-review-sticky{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:390px;max-width:100%;background:#fff;padding:12px 16px 24px;display:flex;align-items:center;gap:12px;box-shadow:0 -10px 28px rgba(15,23,42,.08);z-index:5}
-.essay-mini-action{width:68px;border:none;background:transparent;color:#607489;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;cursor:pointer}
-.essay-mini-action .ico{width:40px;height:40px;border-radius:14px;background:#f2f5f8;display:flex;align-items:center;justify-content:center;font-size:18px}
-.essay-big-action{flex:1;border:none;border-radius:18px;background:linear-gradient(135deg,#19e0c9,#14c9db);color:#08323a;font-size:18px;font-weight:900;padding:16px 18px;cursor:pointer;box-shadow:0 14px 28px rgba(20,201,219,.22)}
+.essay-review-feedback button{width:42px;height:42px;border:none;border-radius:14px;background:linear-gradient(180deg,#f5fbff,#edf6fc);color:#607489;font-size:18px;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(208,228,243,.9)}
+.essay-review-sticky{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:390px;max-width:100%;background:rgba(250,253,255,.96);padding:12px 16px 24px;display:flex;align-items:center;gap:12px;box-shadow:0 -14px 32px rgba(123,177,214,.14);z-index:5;backdrop-filter:blur(14px)}
+.essay-mini-action{width:68px;border:none;background:transparent;color:#5e7994;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;cursor:pointer}
+.essay-mini-action .ico{width:40px;height:40px;border-radius:14px;background:linear-gradient(180deg,#ffffff,#f0f8ff);display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:inset 0 0 0 1px rgba(202,226,244,.94)}
+.essay-big-action{flex:1;border:none;border-radius:18px;background:linear-gradient(90deg,#9ce7ff 0%,#74d8ff 44%,#88c8ff 100%);color:#083b63;font-size:18px;font-weight:900;padding:16px 18px;cursor:pointer;box-shadow:0 16px 28px rgba(121,192,236,.24)}
 .essay-score-pop{position:fixed;left:50%;bottom:106px;transform:translateX(-50%);width:358px;max-width:calc(100% - 32px);background:linear-gradient(180deg,#effffb,#ffffff);border-radius:28px;padding:18px 18px 16px;box-shadow:0 18px 34px rgba(15,23,42,.14);z-index:6}
 .essay-score-close{position:absolute;right:16px;top:14px;border:none;background:transparent;color:#7a8ca1;font-size:22px;cursor:pointer}
 .essay-score-badge{width:92px;height:92px;margin:2px auto 10px;border-radius:24px;background:linear-gradient(135deg,#ffc34d,#ff9f1c);box-shadow:0 12px 26px rgba(255,159,28,.26);display:flex;align-items:center;justify-content:center;color:#fff;font-size:32px;font-weight:900}
@@ -646,13 +655,135 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 .essay-score-sub{text-align:center;font-size:15px;line-height:1.7;color:#617489;margin-top:8px}
 .essay-score-cta{width:100%;border:none;border-radius:18px;background:linear-gradient(135deg,#19e0c9,#14c9db);color:#08323a;font-size:16px;font-weight:900;padding:15px 16px;margin-top:16px;cursor:pointer}
 .essay-report-scroll{padding:14px 16px 112px}
-.essay-report-card{background:#fff;border-radius:26px;padding:18px 16px;box-shadow:0 14px 34px rgba(15,23,42,.06)}
+.essay-report-card{background:rgba(255,255,255,.97);border-radius:28px;padding:18px 16px;box-shadow:0 18px 36px rgba(130,181,218,.12);border:1px solid rgba(225,240,250,.92)}
 .essay-report-card + .essay-report-card{margin-top:14px}
 .essay-report-section{font-size:22px;font-weight:900;color:#162130;margin-bottom:12px}
-.essay-report-dim{font-size:21px;font-weight:900;color:#18212d;margin-top:12px}
-.essay-report-grade{color:#f59e0b}
+.essay-report-dim{font-size:21px;font-weight:900;color:#18324e;margin-top:12px}
+.essay-report-grade{color:#2d8fe8}
 .essay-report-list{font-size:15px;line-height:1.9;color:#344155}
 .essay-report-list b{color:#162130}
+.essay-score-modal{position:fixed;inset:0;background:rgba(7,12,18,.48);z-index:420;display:none;align-items:flex-end;justify-content:center}
+.essay-score-modal.show{display:flex}
+.essay-score-sheet{width:390px;max-width:100%;background:#fff;border-radius:28px 28px 0 0;padding:22px 18px 28px;box-shadow:0 -18px 42px rgba(15,23,42,.22)}
+.essay-score-sheet-title{font-size:21px;font-weight:900;color:#152033}
+.essay-score-sheet-sub{font-size:13px;line-height:1.7;color:#66768a;margin-top:8px}
+.essay-score-options{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.essay-score-option{border:1px solid #e6edf4;background:#f7fafc;border-radius:18px;padding:14px 8px;text-align:center;color:#243246;cursor:pointer}
+.essay-score-option.active{border-color:#19d8c4;background:#eafffb;box-shadow:0 10px 20px rgba(20,201,219,.14)}
+.essay-score-option .num{font-size:24px;font-weight:900;line-height:1}
+.essay-score-option .txt{font-size:11px;font-weight:800;color:#7a8ca1;margin-top:6px}
+.essay-score-sheet-actions{display:flex;gap:12px;margin-top:20px}
+.essay-score-sheet-secondary,.essay-score-sheet-primary{flex:1;border:none;border-radius:18px;padding:14px 16px;font-size:15px;font-weight:900;cursor:pointer}
+.essay-score-sheet-secondary{background:#eef2f6;color:#607489}
+.essay-score-sheet-primary{background:linear-gradient(135deg,#19e0c9,#14c9db);color:#08323a;box-shadow:0 14px 28px rgba(20,201,219,.22)}
+.essay-advice-module{background:#fff;border-radius:24px;padding:18px 16px;box-shadow:0 12px 30px rgba(15,23,42,.06)}
+.essay-advice-module + .essay-advice-module{margin-top:14px}
+.essay-advice-title{font-size:20px;font-weight:900;color:#162130;margin-bottom:10px}
+.essay-advice-copy{font-size:15px;line-height:1.9;color:#344155}
+.essay-advice-score-row{display:flex;align-items:center;gap:12px;margin:12px 0}
+.essay-advice-score-badge{min-width:74px;border-radius:18px;background:linear-gradient(135deg,#fff7d6,#ffe5a3);padding:12px 10px;text-align:center;color:#9a5a00}
+.essay-advice-score-badge .grade{font-size:18px;font-weight:900}
+.essay-advice-score-badge .score{font-size:26px;font-weight:900;line-height:1.1}
+.essay-advice-split{display:grid;grid-template-columns:1fr;gap:12px;margin-top:12px}
+.essay-advice-point{border-radius:20px;padding:14px;background:#f7fafc;border:1px solid #edf2f7}
+.essay-advice-point.good{background:#f0fffb;border-color:#bff5ea}
+.essay-advice-point.bad{background:#fff7f4;border-color:#ffd8cc}
+.essay-advice-point-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+.essay-advice-point-title{font-size:16px;font-weight:900;color:#162130}
+.essay-advice-point-score{font-size:14px;font-weight:900;border-radius:999px;padding:5px 10px}
+.essay-advice-point.good .essay-advice-point-score{background:#d8fff5;color:#047869}
+.essay-advice-point.bad .essay-advice-point-score{background:#ffe4dc;color:#b4331d}
+.essay-advice-point-body{font-size:14px;line-height:1.85;color:#415066}
+#essaySmartReview,
+#essaySmartReport{background:
+  radial-gradient(circle at 50% -2%,rgba(149,223,255,.38),transparent 24%),
+  radial-gradient(circle at 12% 6%,rgba(215,244,255,.46),transparent 18%),
+  radial-gradient(circle at 88% 8%,rgba(199,229,255,.32),transparent 18%),
+  linear-gradient(180deg,#eef8ff 0%,#f7fcff 24%,#fbfeff 58%,#ffffff 100%)}
+#essaySmartReview .essay-review-shell{padding:0 0 126px;position:relative}
+#essaySmartReview .essay-review-shell::before,
+#essaySmartReport .essay-review-shell::before{content:'';position:absolute;left:50%;top:72px;transform:translateX(-50%);width:294px;height:294px;border-radius:50%;background:radial-gradient(circle,rgba(134,220,255,.34) 0%,rgba(166,231,255,.12) 38%,transparent 74%);filter:blur(6px);pointer-events:none}
+#essaySmartReview .essay-review-shell::after,
+#essaySmartReport .essay-review-shell::after{content:'';position:absolute;left:18px;right:18px;top:108px;bottom:104px;border-radius:34px;background:
+  linear-gradient(rgba(156,211,244,.1) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(156,211,244,.08) 1px,transparent 1px);background-size:22px 22px;opacity:.42;pointer-events:none;mask-image:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.7) 22%,rgba(0,0,0,.86) 74%,transparent)}
+#essaySmartReview .essay-review-topbar,
+#essaySmartReport .essay-review-topbar{padding:18px 16px 8px;background:transparent;position:relative;top:auto;box-shadow:none;z-index:2}
+#essaySmartReview .essay-review-back,
+#essaySmartReview .essay-review-help,
+#essaySmartReport .essay-review-back,
+#essaySmartReport .essay-review-help{width:42px;height:42px;background:linear-gradient(180deg,rgba(255,255,255,.88),rgba(242,249,255,.72));backdrop-filter:blur(12px);border:1px solid rgba(197,223,245,.92);font-size:22px;box-shadow:0 10px 20px rgba(125,181,218,.12),inset 0 1px 0 rgba(255,255,255,.7)}
+#essaySmartReview .essay-review-topmeta,
+#essaySmartReport .essay-review-topmeta{opacity:.0001;pointer-events:none}
+#essaySmartReview .essay-review-tabs{padding:4px 54px 0;background:transparent;position:relative;z-index:1}
+#essaySmartReview .essay-review-tab{background:linear-gradient(180deg,rgba(231,243,251,.94),rgba(219,237,248,.82));color:#45627f;padding:14px 12px;font-size:16px;font-weight:900;box-shadow:inset 0 0 0 1px rgba(194,223,244,.88),0 10px 20px rgba(166,203,228,.08)}
+#essaySmartReview .essay-review-tab.active{background:linear-gradient(180deg,#ffffff,#f4fbff);color:#123b61;box-shadow:0 14px 28px rgba(138,193,229,.2),inset 0 0 0 1px rgba(203,229,247,.96)}
+#essaySmartReview .essay-review-legend{display:none}
+#essaySmartReview .essay-review-legend{padding:14px 16px 0;margin-top:2px;display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative;z-index:2}
+#essaySmartReview .essay-review-legend-row{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+#essaySmartReview .essay-review-legend-item{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:#1f2937}
+#essaySmartReview .essay-review-legend-item i{width:14px;height:14px;border-radius:5px;box-shadow:none}
+#essaySmartReview .essay-review-legend-item .raw{background:#1f2329}
+#essaySmartReview .essay-review-legend-item .theme{background:#2393ff}
+#essaySmartReview .essay-review-legend-item .bonus{background:#ffcf44}
+#essaySmartReview .essay-review-legend-item .deduct{background:#ff5a45}
+#essaySmartReview .essay-review-body{margin:24px 16px 0;background:linear-gradient(180deg,rgba(255,255,255,.99),rgba(248,252,255,.97));border-radius:28px 28px 0 0;padding:0;box-shadow:0 18px 36px rgba(140,191,226,.14);overflow:hidden;border:1px solid rgba(228,241,250,.96);position:relative}
+#essaySmartReview .essay-review-body::before{content:'';position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,rgba(119,210,255,.9),rgba(143,198,255,.86),rgba(204,236,255,.5))}
+#essaySmartReview .essay-review-body.essay-review-body-full{margin:10px 0 0;background:transparent;box-shadow:none;border:none;border-radius:0;padding:0 16px 126px;overflow:visible}
+#essaySmartReview .essay-review-body.essay-review-body-full::before{display:none}
+#essaySmartReview .essay-advice-module{background:rgba(255,255,255,.98);border-radius:0;padding:24px 18px 22px;box-shadow:none;border-top:1px solid rgba(228,240,249,.92);position:relative}
+#essaySmartReview .essay-advice-module:first-child{border-top:none}
+#essaySmartReview .essay-advice-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}
+#essaySmartReview .essay-advice-title{font-size:24px;line-height:1.3;letter-spacing:-.3px;color:#163f67;margin:0;flex:1}
+#essaySmartReview .essay-advice-copy{font-size:16px;line-height:1.95;color:#2a4158}
+#essaySmartReview .essay-advice-score-row{align-items:flex-start;gap:14px;margin:10px 0 0}
+#essaySmartReview .essay-advice-score-badge{min-width:92px;border-radius:24px;background:linear-gradient(180deg,#f4fbff,#dcedff);padding:14px 10px;color:#2672b1;box-shadow:0 12px 24px rgba(123,187,232,.16),inset 0 0 0 1px rgba(202,229,247,.92)}
+#essaySmartReview .essay-advice-score-badge .grade{font-size:20px}
+#essaySmartReview .essay-advice-score-badge .score{font-size:30px}
+#essaySmartReview .essay-advice-final-badge{flex-shrink:0;min-width:104px;padding:10px 12px 8px;border-radius:20px;background:linear-gradient(180deg,#fbfeff,#e8f5ff);box-shadow:0 10px 22px rgba(128,188,229,.14),inset 0 0 0 1px rgba(200,226,245,.94);text-align:right}
+#essaySmartReview .essay-advice-final-badge .label{display:block;font-size:11px;font-weight:800;letter-spacing:.6px;color:#6f90ab}
+#essaySmartReview .essay-advice-final-badge .num{display:block;margin-top:4px;font-size:32px;line-height:1;color:#1464a6;font-weight:900;font-family:"Bradley Hand","Segoe Print","STKaiti","Comic Sans MS",cursive}
+#essaySmartReview .essay-advice-base-badge{flex-shrink:0;min-width:98px;padding:12px 12px 10px;border-radius:22px;background:linear-gradient(180deg,#f4fbff,#dcedff);box-shadow:0 12px 24px rgba(123,187,232,.16),inset 0 0 0 1px rgba(202,229,247,.92);text-align:right}
+#essaySmartReview .essay-advice-base-badge .grade{display:block;font-size:16px;font-weight:900;color:#2a75b4}
+#essaySmartReview .essay-advice-base-badge .score{display:block;margin-top:4px;font-size:26px;line-height:1.05;font-weight:900;color:#155d97}
+#essaySmartReview .essay-advice-split{gap:14px;margin-top:14px}
+#essaySmartReview .essay-advice-point{border-radius:24px;padding:18px 16px 16px;border:none;box-shadow:0 10px 24px rgba(182,210,230,.08)}
+#essaySmartReview .essay-advice-point.good{background:linear-gradient(180deg,#fff9df,#fff3b8);box-shadow:inset 0 0 0 1px rgba(247,220,127,.92),0 12px 24px rgba(224,185,72,.12)}
+#essaySmartReview .essay-advice-point.bad{background:linear-gradient(180deg,#fff2ee,#ffdedd);box-shadow:inset 0 0 0 1px rgba(255,194,190,.96),0 12px 24px rgba(229,113,100,.12)}
+#essaySmartReview .essay-advice-point-title{font-size:17px;color:#173a5b}
+#essaySmartReview .essay-advice-point-score{font-size:15px;padding:6px 12px}
+#essaySmartReview .essay-advice-point.good .essay-advice-point-score{background:#ffe28a;color:#9a6700}
+#essaySmartReview .essay-advice-point.bad .essay-advice-point-score{background:#ffcdc6;color:#b4331d}
+#essaySmartReview .essay-advice-point-body{font-size:15px;line-height:1.9;color:#3b5470}
+#essaySmartReview .essay-full-page{position:relative;z-index:1}
+#essaySmartReview .essay-full-block{position:relative;padding-left:44px;margin-bottom:34px}
+#essaySmartReview .essay-full-number{position:absolute;left:0;top:1px;width:32px;height:32px;border-radius:50%;background:#b6b8bd;color:#fff;font-size:17px;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 14px rgba(166,174,185,.16)}
+#essaySmartReview .essay-full-text{font-size:18px;line-height:1.92;color:#171c24;font-weight:500;letter-spacing:.2px}
+#essaySmartReview .essay-full-text.is-marked{padding-bottom:10px;border-bottom:2px dashed rgba(188,194,202,.56)}
+#essaySmartReview .essay-full-theme{color:#2393ff;font-weight:800;background:linear-gradient(180deg,rgba(35,147,255,0),rgba(35,147,255,.16))}
+#essaySmartReview .essay-full-bonus{color:#171c24;font-weight:700;text-decoration-line:underline;text-decoration-style:wavy;text-decoration-color:#ffcf44;text-decoration-thickness:2px;text-underline-offset:5px}
+#essaySmartReview .essay-full-deduct{color:#171c24;text-decoration-line:underline;text-decoration-color:#ff5a45;text-decoration-thickness:2px;text-underline-offset:6px}
+#essaySmartReview .essay-full-typo{display:inline-flex;align-items:center;justify-content:center;min-width:1.2em;height:1.2em;padding:0 .08em;margin:0 .04em;border:2px solid #ff5a45;border-radius:999px;line-height:1}
+#essaySmartReview .essay-review-sticky,
+#essaySmartReport .essay-review-sticky{background:rgba(249,253,255,.98);backdrop-filter:blur(14px);padding:12px 16px 24px;box-shadow:0 -14px 30px rgba(141,190,225,.14);border-top:1px solid rgba(219,236,248,.92)}
+#essaySmartReview .essay-mini-action,
+#essaySmartReport .essay-mini-action{width:74px;color:#5c7893;font-size:11px}
+#essaySmartReview .essay-mini-action .ico,
+#essaySmartReport .essay-mini-action .ico{width:44px;height:44px;border-radius:14px;background:linear-gradient(180deg,#ffffff,#eff8ff);box-shadow:inset 0 0 0 1px rgba(206,228,245,.92);font-size:20px}
+#essaySmartReview .essay-big-action,
+#essaySmartReport .essay-big-action{border-radius:20px;background:linear-gradient(90deg,#baeefe 0%,#84ddff 42%,#88bfff 100%);font-size:18px;color:#0d466f;box-shadow:0 18px 30px rgba(120,191,236,.24),inset 0 1px 0 rgba(255,255,255,.56)}
+#essaySmartReport .essay-review-shell{padding:0 0 126px;position:relative}
+#essaySmartReport .essay-report-scroll{padding:12px 16px 112px;position:relative;z-index:1}
+#essaySmartReport .essay-report-card{background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(246,251,255,.96));border-radius:28px;padding:20px 16px;box-shadow:0 18px 36px rgba(130,181,218,.12);border:1px solid rgba(224,240,250,.92);position:relative;overflow:hidden}
+#essaySmartReport .essay-report-card::before{content:'';position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,rgba(127,219,255,.92),rgba(142,196,255,.84),rgba(205,236,255,.46))}
+#essaySmartReport .essay-report-card + .essay-report-card{margin-top:14px}
+#essaySmartReport .essay-report-section{color:#163a5b}
+#essaySmartReport .essay-report-dim{color:#20486f}
+#essaySmartReport .essay-report-grade{color:#2d8fe8}
+#essaySmartReport .essay-report-list{color:#3b5470}
+#essaySmartReport .essay-report-list b{color:#173c5f}
+#essaySmartReport .essay-full-rail{border-left-color:#95d8ff}
+#essaySmartReport .essay-full-anchor{background:linear-gradient(180deg,#eef8ff,#fbfeff);color:#2576b6;box-shadow:inset 0 0 0 1px rgba(194,223,244,.9)}
 @keyframes essayLoadingBlink{
   0%,100%{opacity:.24}
   50%{opacity:1}
@@ -663,6 +794,111 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
   50%{width:74%}
   100%{width:45%}
 }
+
+/* ══ 结果页复刻版 ══ */
+#essaySmartReview{background:#f5f5f7;min-height:100vh;padding-bottom:108px}
+.essay-video-review-shell{width:390px;max-width:100%;min-height:100vh;margin:0 auto;position:relative;background:#f5f5f7}
+.essay-video-review-hero{height:300px;position:relative;overflow:hidden;background:#d9d9d9}
+.essay-video-review-bg{display:block;width:100%;height:100%;object-fit:fill}
+.essay-video-review-top{position:absolute;left:0;right:0;top:0;padding:14px 14px 0;display:flex;align-items:center;justify-content:space-between}
+.essay-video-icon-btn{border:none;cursor:pointer}
+.essay-video-back{width:34px;height:34px;border-radius:50%;background:rgba(29,29,29,.72);color:#fff;font-size:22px;display:flex;align-items:center;justify-content:center}
+.essay-video-feedback{min-width:46px;height:30px;padding:0 10px;border-radius:10px;background:rgba(29,29,29,.72);color:#fff;font-size:13px;font-weight:600}
+.essay-video-sheet{position:relative;margin-top:-26px;background:#fff;border-radius:30px 30px 0 0;min-height:calc(100vh - 240px);box-shadow:0 -4px 18px rgba(15,23,42,.06)}
+.essay-video-handle{width:54px;height:6px;border-radius:999px;background:#dadada;margin:0 auto;transform:translateY(10px)}
+.essay-video-tabs{display:flex;align-items:center;justify-content:space-between;padding:28px 22px 8px}
+.essay-video-tab{position:relative;flex:1;border:none;background:transparent;color:#3c3c3c;font-size:17px;font-weight:700;padding:10px 0 12px;cursor:pointer}
+.essay-video-tab.active{color:#111}
+.essay-video-tab.active::after{content:'';position:absolute;left:50%;bottom:0;transform:translateX(-50%) rotate(-7deg);width:34px;height:6px;border-radius:999px;background:linear-gradient(90deg,#7c78ff,#5d56f2)}
+.essay-video-content{padding:10px 16px 36px}
+.essay-video-card{background:#fff;border-radius:24px}
+.essay-video-score-wrap{background:linear-gradient(135deg,#f6f4ff 0%,#edf8ff 42%,#ecfff1 100%);border-radius:22px;padding:14px}
+.essay-video-mode-title{font-size:14px;font-weight:700;color:#212121;margin-bottom:10px}
+.essay-video-score-card{background:rgba(255,255,255,.82);border-radius:22px;padding:16px 14px 14px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.55)}
+.essay-video-score-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.essay-video-score-label{font-size:15px;font-weight:700;color:#242424}
+.essay-video-score-meta{font-size:11px;color:#9aa0a6}
+.essay-video-radar-box{position:relative;height:218px;margin-top:6px}
+.essay-video-radar-svg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:182px;height:182px}
+.essay-video-radar-grade{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:20px;font-weight:800;color:#7268f3}
+.essay-video-radar-label{position:absolute;font-size:12px;color:#6a668d;white-space:nowrap}
+.essay-video-radar-label.top{left:50%;top:10px;transform:translateX(-50%)}
+.essay-video-radar-label.left-top{left:22px;top:62px}
+.essay-video-radar-label.right-top{right:20px;top:62px}
+.essay-video-radar-label.left-bottom{left:28px;bottom:36px}
+.essay-video-radar-label.right-bottom{right:18px;bottom:36px}
+.essay-video-radar-label.bottom{left:50%;bottom:12px;transform:translateX(-50%)}
+.essay-video-section{padding:18px 6px 0}
+.essay-video-section-title{font-size:18px;font-weight:700;color:#222;display:flex;align-items:center;gap:8px}
+.essay-video-section-title::before{content:'•';font-size:20px;color:#5a62ff;line-height:1}
+.essay-video-section p{font-size:15px;line-height:2;color:#3f3f46;margin-top:10px}
+.essay-video-sentence-nav{display:flex;gap:14px;padding:0 6px 12px}
+.essay-video-sentence-dot{width:24px;height:24px;border:none;border-radius:50%;background:transparent;color:#666;font-size:15px;font-weight:600;cursor:pointer}
+.essay-video-sentence-dot.active{background:#ffdb76;color:#8d5b00}
+.essay-video-sentence-card{background:#fff7e8;border-radius:20px;padding:18px 16px 16px}
+.essay-video-sentence-card.good{background:#eafcff}
+.essay-video-sentence-title{font-size:16px;font-weight:800;color:#2b2b2b}
+.essay-video-sentence-highlight{font-size:15px;font-weight:700;color:#e59d18;margin-top:14px;line-height:1.8}
+.essay-video-sentence-good{display:inline-block;margin-left:6px;color:#ff7c80;font-weight:800}
+.essay-video-sentence-text{font-size:15px;line-height:1.95;color:#4b5563;margin-top:10px}
+.essay-video-sentence-subtitle{font-size:16px;font-weight:800;color:#2b2b2b;margin-top:16px}
+.essay-video-sentence-polish{font-size:16px;line-height:1.95;color:#3f3f46;margin-top:10px}
+.essay-video-note{padding:24px 6px 4px;text-align:center;font-size:12px;color:#c6c8cc}
+.essay-video-actions{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:390px;max-width:100%;padding:10px 16px 24px;background:rgba(255,255,255,.96);display:flex;align-items:flex-end;gap:14px;border-top:1px solid rgba(0,0,0,.04);box-shadow:0 -6px 20px rgba(15,23,42,.06)}
+.essay-video-mini{border:none;background:transparent;color:#222;cursor:pointer;font-size:12px;display:flex;flex-direction:column;align-items:center;gap:4px}
+.essay-video-mini-ico{width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:24px;line-height:1}
+.essay-video-primary{flex:1;height:50px;border:none;border-radius:25px;background:linear-gradient(90deg,#6356ff,#5e62ff);color:#fff;font-size:19px;font-weight:700;cursor:pointer}
+.essay-video-primary:active,.essay-video-mini:active,.essay-video-tab:active,.essay-video-sentence-dot:active,.essay-video-back:active,.essay-video-feedback:active{transform:scale(.98)}
+
+/* ══ 批改结果页交互版 ══ */
+#essaySmartReview{background:#dfe3e8;padding-bottom:0;overflow:hidden}
+.essay-result-stage{width:390px;max-width:100%;height:100vh;margin:0 auto;position:relative;background:#dfe3e8;overflow:hidden}
+.essay-doc-scroll{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;background:#dfe3e8;touch-action:pan-y}
+.essay-doc-scroll::after{content:'';display:block;height:280px}
+.essay-doc-stage{position:relative;width:150%;margin-left:-25%;min-height:100%}
+.essay-doc-image{display:block;width:100%;height:auto;user-select:none;-webkit-user-drag:none}
+.essay-result-topbar{position:absolute;left:0;right:0;top:0;z-index:8;display:flex;justify-content:space-between;align-items:center;padding:48px 16px 0;pointer-events:none}
+.essay-result-topbar button{pointer-events:auto;border:none;cursor:pointer}
+.essay-result-back{width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;font-size:20px;line-height:30px;text-align:center}
+.essay-result-feedback{height:30px;border-radius:8px;background:rgba(0,0,0,.55);color:#fff;font-size:13px;padding:0 10px}
+.essay-doc-marker{position:absolute;z-index:3;pointer-events:none}
+.essay-doc-marker.line{height:5px;border-radius:999px;background:rgba(255,221,74,.88);box-shadow:0 0 0 1px rgba(255,189,0,.28)}
+.essay-doc-marker.circle{border:3px solid rgba(239,68,68,.92);border-radius:50%;background:rgba(239,68,68,.04);box-shadow:0 0 0 1px rgba(255,255,255,.36)}
+.essay-doc-marker.flash{animation:essayMarkerFlash .92s ease-in-out 2}
+.essay-doc-marker.circle.flash{animation:essayCircleFlash .92s ease-in-out 2}
+@keyframes essayMarkerFlash{
+  0%,100%{filter:none;transform:scale(1)}
+  50%{filter:drop-shadow(0 0 14px rgba(255,212,0,.95));transform:scale(1.04)}
+}
+@keyframes essayCircleFlash{
+  0%,100%{filter:none;transform:scale(1)}
+  50%{filter:drop-shadow(0 0 14px rgba(239,68,68,.95));transform:scale(1.14)}
+}
+.essay-result-sheet{position:absolute;left:0;right:0;bottom:84px;top:46vh;z-index:6;background:#fff;border-radius:28px 28px 0 0;box-shadow:0 -10px 28px rgba(15,23,42,.13);display:flex;flex-direction:column;overflow:hidden;touch-action:auto}
+.essay-result-sheet.animating{transition:top .24s cubic-bezier(.2,.8,.2,1)}
+.essay-result-grabber{width:48px;height:5px;border-radius:999px;background:#d7d7d7;margin:10px auto 2px;flex-shrink:0;cursor:grab;touch-action:none}
+.essay-result-grabber:active{cursor:grabbing}
+.essay-result-tabs{display:flex;align-items:center;justify-content:space-around;padding:10px 26px 8px;flex-shrink:0;touch-action:none}
+.essay-result-tab{position:relative;flex:1;border:none;background:transparent;color:#444;font-size:17px;font-weight:700;padding:10px 0 13px;cursor:pointer}
+.essay-result-tab.active{color:#111}
+.essay-result-tab.active::after{content:'';position:absolute;left:50%;bottom:0;transform:translateX(-50%) rotate(-6deg);width:36px;height:5px;border-radius:999px;background:#6b5cff}
+.essay-result-body{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;padding:8px 18px 28px;overscroll-behavior:contain}
+.essay-result-module{background:#fff;border-radius:22px;padding:16px 14px;margin-bottom:14px;box-shadow:0 8px 22px rgba(15,23,42,.05);border:1px solid #f0f1f4}
+.essay-result-module.score{background:linear-gradient(135deg,#f6f4ff,#eefbff)}
+.essay-result-module-title{font-size:18px;font-weight:800;color:#151515;line-height:1.35}
+.essay-result-score-value{font-size:30px;font-weight:900;color:#5f52ff;margin-top:8px;letter-spacing:.2px}
+.essay-result-copy{font-size:15px;line-height:1.9;color:#333;margin-top:10px}
+.essay-result-module-badge{display:inline-flex;align-items:center;height:26px;border-radius:999px;padding:0 10px;margin-left:6px;background:#f6f0ff;color:#6b5cff;font-size:13px;font-weight:800;vertical-align:2px}
+.essay-note-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.essay-note-marker-btn{width:34px;height:34px;border:none;border-radius:50%;background:#f4f5f7;color:#333;font-size:15px;font-weight:800;cursor:pointer}
+.essay-note-marker-btn.highlight{background:#fff0a6;color:#7a4b00}
+.essay-note-marker-btn.deduct{background:#ffe8e8;color:#c52121}
+.essay-note-marker-btn:active{transform:scale(.94)}
+.essay-result-actionbar{position:absolute;left:0;right:0;bottom:0;z-index:7;background:#fff;padding:10px 16px 24px;display:flex;align-items:flex-end;gap:14px;border-top:1px solid rgba(0,0,0,.05);box-shadow:0 -6px 20px rgba(15,23,42,.06)}
+.essay-result-mini{width:58px;border:none;background:transparent;color:#222;cursor:pointer;font-size:12px;display:flex;flex-direction:column;align-items:center;gap:4px}
+.essay-result-mini-ico{width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:24px;line-height:1}
+.essay-result-download{flex:1;height:50px;border:none;border-radius:25px;background:linear-gradient(90deg,#6356ff,#5e62ff);color:#fff;font-size:18px;font-weight:800;cursor:pointer}
+.essay-result-download:active,.essay-result-mini:active,.essay-result-tab:active,.essay-result-back:active,.essay-result-feedback:active{transform:scale(.98)}
 
 /* ══ 制定计划页通用 ══ */
 .plan-page{background:#f2f3f5;min-height:100vh;padding-bottom:90px}
@@ -1344,6 +1580,22 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 </div>
 
 <!-- ════════════ 作文批改流程 ════════════ -->
+<div class="essay-score-modal" id="essayScoreModal">
+  <div class="essay-score-sheet">
+    <div class="essay-score-sheet-title">选择本次作文满分</div>
+    <div class="essay-score-sheet-sub">请选择作文满分，后续会按照该满分对应的高考评分规则进行批改</div>
+    <div class="essay-score-options">
+      <button class="essay-score-option" data-score="50" onclick="selectEssayFullScore(50)" type="button"><div class="num">50</div><div class="txt">满分</div></button>
+      <button class="essay-score-option active" data-score="60" onclick="selectEssayFullScore(60)" type="button"><div class="num">60</div><div class="txt">满分</div></button>
+      <button class="essay-score-option" data-score="70" onclick="selectEssayFullScore(70)" type="button"><div class="num">70</div><div class="txt">满分</div></button>
+    </div>
+    <div class="essay-score-sheet-actions">
+      <button class="essay-score-sheet-secondary" onclick="closeEssayScoreModal()" type="button">取消</button>
+      <button class="essay-score-sheet-primary" onclick="confirmEssayFullScore()" type="button">开始拍照</button>
+    </div>
+  </div>
+</div>
+
 <div class="page essay-page" id="essayCapture">
   <div class="essay-smart-device camera">
     <div class="essay-camera-top">
@@ -1396,7 +1648,7 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
         <div class="essay-loading-panel">
           <div class="essay-loading-status" id="essayLoadingStatusText">正在上传图片</div>
           <div class="essay-loading-main" id="essayLoadingMainText">正在为文章打分…</div>
-          <div class="essay-loading-desc" id="essayLoadingDescText">系统会先识别手写内容，再生成综合评价、全文精批和亮点建议。</div>
+          <div class="essay-loading-desc" id="essayLoadingDescText">系统会先识别手写内容，再生成全文点评、批改笔记和亮点建议。</div>
           <div class="essay-loading-dots"><span></span><span></span><span></span></div>
           <div class="essay-loading-progressbar"><div class="fill"></div></div>
           <div class="essay-loading-note">预计耗时 2-3 秒，请稍候</div>
@@ -1423,7 +1675,6 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
         <div class="essay-preview-badge" id="essayPreviewCounter">当前预览</div>
       </div>
       <div class="essay-preview-meta">
-        <div class="essay-preview-meta-copy" id="essayPreviewMetaCopy">题目用于理解写作要求，作文用于识别正文内容；确认无误后再开始批改。</div>
         <div class="essay-preview-meta-copy" id="essayPreviewMetaText">已完成 0 / 2 步</div>
       </div>
       <div class="essay-thumb-row" id="essayCaptureThumbs"></div>
@@ -1435,42 +1686,36 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
   </div>
 </div>
 
-<div class="page essay-page essay-review-page" id="essaySmartReview">
-  <div class="essay-review-shell">
-    <div class="essay-review-topbar">
-      <button aria-label="返回确认页" class="essay-review-back" onclick="backFromEssaySmartReview()" type="button">‹</button>
-      <div class="essay-review-topmeta">
-        <div class="title">批改结果</div>
-        <div class="sub">作文智能批改</div>
+<div class="page essay-page" id="essaySmartReview">
+  <div class="essay-result-stage">
+    <div class="essay-doc-scroll" id="essayDocScroll">
+      <div class="essay-doc-stage" id="essayDocStage">
+        <img alt="作文原图长图" class="essay-doc-image" src="作文长图.png">
+        <div class="essay-doc-marker line" data-marker-id="highlight-1" style="left:11%;top:18.4%;width:76%"></div>
+        <div class="essay-doc-marker line" data-marker-id="highlight-2" style="left:16%;top:35.8%;width:70%"></div>
+        <div class="essay-doc-marker line" data-marker-id="highlight-3" style="left:9%;top:77.2%;width:72%"></div>
+        <div class="essay-doc-marker circle" data-marker-id="deduct-1" style="left:70%;top:10.8%;width:9%;height:1.6%"></div>
+        <div class="essay-doc-marker circle" data-marker-id="deduct-2" style="left:53%;top:46.6%;width:8%;height:1.5%"></div>
+        <div class="essay-doc-marker circle" data-marker-id="deduct-3" style="left:25%;top:79.8%;width:8%;height:1.5%"></div>
       </div>
-      <button aria-label="帮助" class="essay-review-help" onclick="showToast('这里可查看批改说明')" type="button">?</button>
     </div>
-    <div class="essay-review-tabs">
-      <button class="essay-review-tab active" id="essayReviewTabOverall" onclick="switchEssayReviewTab('overall')" type="button">综合评价</button>
-      <button class="essay-review-tab" id="essayReviewTabFull" onclick="switchEssayReviewTab('full')" type="button">全文精批</button>
+    <div class="essay-result-topbar">
+      <button aria-label="返回确认页" class="essay-result-back" onclick="backFromEssaySmartReview()" type="button">‹</button>
+      <button class="essay-result-feedback" onclick="showToast('反馈入口已预留')" type="button">反馈</button>
     </div>
-    <div class="essay-review-card">
-      <div class="essay-review-head">
-        <div>
-          <div class="essay-review-title">张缩有度 张力前行</div>
-          <div class="essay-review-count">786字</div>
-        </div>
+    <div class="essay-result-sheet" id="essayResultSheet">
+      <div class="essay-result-grabber" id="essayResultGrabber"></div>
+      <div class="essay-result-tabs" id="essayResultSheetHeader">
+        <button class="essay-result-tab active" id="essayReviewTabOverall" onclick="switchEssayReviewTab('overall')" type="button">全文点评</button>
+        <button class="essay-result-tab" id="essayReviewTabNotebook" onclick="switchEssayReviewTab('notes')" type="button">批改笔记</button>
       </div>
-      <div class="essay-review-legend" id="essayReviewLegend"></div>
+      <div class="essay-result-body" id="essaySmartReviewContent"></div>
     </div>
-    <div class="essay-review-body" id="essaySmartReviewContent"></div>
-  </div>
-  <div class="essay-score-pop" id="essayReviewScoreCard">
-    <button aria-label="关闭评分弹层" class="essay-score-close" onclick="closeEssayReviewCard()" type="button">×</button>
-    <div class="essay-score-badge">优</div>
-    <div class="essay-score-title">哇！写的真棒！</div>
-    <div class="essay-score-sub">还有提升空间，已为你找到 <span style="color:#2f80ed;font-weight:900">14</span> 个提升点</div>
-    <button class="essay-score-cta" onclick="openEssaySmartReport()" type="button">查看详情</button>
-  </div>
-  <div class="essay-review-sticky">
-    <button class="essay-mini-action" onclick="retakeEssayFromReview()" type="button"><span class="ico">📷</span><span>重拍</span></button>
-    <button class="essay-mini-action" onclick="openEssaySmartReport()" type="button"><span class="ico">📄</span><span>批改报告</span></button>
-    <button class="essay-big-action" onclick="openEssayPolishView()" type="button">全文润色</button>
+    <div class="essay-result-actionbar">
+      <button class="essay-result-mini" onclick="shareEssayReview()" type="button"><span class="essay-result-mini-ico">↻</span><span>分享</span></button>
+      <button class="essay-result-mini" onclick="saveEssayReview()" type="button"><span class="essay-result-mini-ico">⇩</span><span>保存</span></button>
+      <button class="essay-result-download" onclick="downloadEssayReport()" type="button">下载报告</button>
+    </div>
   </div>
 </div>
 
@@ -1662,7 +1907,14 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 <script>
 // ── 通用 ──
 function showToast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('show')},1600)}
-function showPage(id){document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});document.getElementById(id).classList.add('active');window.scrollTo(0,0)}
+function showPage(id){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+  if(id==='essaySmartReview'){
+    requestAnimationFrame(function(){ensureEssayResultInteractions(true);});
+  }
+}
 
 // ── 登录 / 引导 / 首页 → 计划 ──
 function escapeHtml(str){
@@ -1725,8 +1977,18 @@ var essayCaptureStep='topic';
 var essayPreviewActiveKey='topic';
 var essayCaptureShots={topic:null,essay:[]};
 var essaySelectedPhotos=[];
+var essayThumbDragState=null;
+var essayThumbClickSuppressed=false;
+var essayResultSheetReady=false;
+var essayResultSheetDrag=null;
+var essayResultSheetSnap='mid';
+var essayResultSheetTop=0;
+var essayFullScore=60;
+var essayFinalScore=48;
+var essayFinalCategory='二类文';
+var essayBaseBand='二档';
+var essayBaseScore=43;
 var essayReviewTab='overall';
-var essayReviewCardVisible=true;
 var activeEssayRecordId='essay_3';
 var activeHomeNav='discover';
 var essayRecords=[
@@ -2191,11 +2453,14 @@ function startNewEssayTask(){
   essayCaptureShots={topic:null,essay:[]};
   essaySelectedPhotos=[];
   essayReviewTab='overall';
-  essayReviewCardVisible=true;
+  essayFinalScore=48;
+  essayFinalCategory='二类文';
+  essayBaseBand='二档';
+  essayBaseScore=43;
   renderEssayCapturePage();
   renderEssayCapturePreviewPage();
   renderEssaySmartReview();
-  openEssayCapture();
+  openEssayScoreModal();
 }
 function openEssayRecordsPage(){
   essayTaskMode='records';
@@ -2385,6 +2650,38 @@ function finishOnboarding(){
   queueHomeGuide();
   showToast('欢迎进入自主学习之旅，点击“去制定”开始计划');
 }
+function openEssayScoreModal(){
+  selectEssayFullScore(essayFullScore||60);
+  var modal=document.getElementById('essayScoreModal');
+  if(modal)modal.classList.add('show');
+}
+function closeEssayScoreModal(){
+  var modal=document.getElementById('essayScoreModal');
+  if(modal)modal.classList.remove('show');
+}
+function updateEssayScoreProfile(score){
+  var profileMap={
+    50:{finalScore:42,baseScore:36,category:'二类文',baseBand:'二档'},
+    60:{finalScore:48,baseScore:43,category:'二类文',baseBand:'二档'},
+    70:{finalScore:56,baseScore:50,category:'二类文',baseBand:'二档'}
+  };
+  var profile=profileMap[score]||profileMap[60];
+  essayFinalScore=profile.finalScore;
+  essayBaseScore=profile.baseScore;
+  essayFinalCategory=profile.category;
+  essayBaseBand=profile.baseBand;
+}
+function selectEssayFullScore(score){
+  essayFullScore=score;
+  updateEssayScoreProfile(score);
+  document.querySelectorAll('.essay-score-option').forEach(function(option){
+    option.classList.toggle('active',Number(option.getAttribute('data-score'))===score);
+  });
+}
+function confirmEssayFullScore(){
+  closeEssayScoreModal();
+  openEssayCapture();
+}
 function getEssayEssayShotCount(){
   return essayCaptureShots.essay.length;
 }
@@ -2413,14 +2710,18 @@ function getEssayCaptureItems(){
     key:'topic',
     label:getEssayCaptureConfig('topic').label,
     dataUrl:essayCaptureShots.topic,
-    subLabel:essayCaptureShots.topic?'已拍完成':'还未拍摄'
+    subLabel:essayCaptureShots.topic?'已拍完成':'还未拍摄',
+    dragKind:'topic',
+    essayIndex:-1
   });
   essayCaptureShots.essay.forEach(function(dataUrl,index){
     items.push({
       key:'essay_'+index,
       label:'作文第'+(index+1)+'页',
       dataUrl:dataUrl,
-      subLabel:'正文第'+(index+1)+'张'
+      subLabel:'正文第'+(index+1)+'张',
+      dragKind:'essay',
+      essayIndex:index
     });
   });
   if(!essayCaptureShots.essay.length){
@@ -2428,7 +2729,9 @@ function getEssayCaptureItems(){
       key:'essay_empty',
       label:getEssayCaptureConfig('essay').label,
       dataUrl:'',
-      subLabel:'还未拍摄'
+      subLabel:'还未拍摄',
+      dragKind:'empty',
+      essayIndex:-1
     });
   }
   return items;
@@ -2527,13 +2830,162 @@ function setEssayPreviewActive(key){
   essayPreviewActiveKey=key;
   renderEssayCapturePreviewPage();
 }
+function handleEssayThumbClick(event,key){
+  if(essayThumbClickSuppressed){
+    essayThumbClickSuppressed=false;
+    if(event){
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    return;
+  }
+  setEssayPreviewActive(key);
+}
+function bindEssayCaptureThumbDrag(containerId){
+  var container=document.getElementById(containerId);
+  if(!container)return;
+  container.querySelectorAll('.essay-thumb-card[data-drag-kind="essay"]').forEach(function(card){
+    card.onpointerdown=startEssayThumbDrag;
+  });
+}
+function startEssayThumbDrag(event){
+  if(getEssayEssayShotCount()<2)return;
+  if(event.button!==undefined&&event.button!==0)return;
+  var card=event.currentTarget;
+  if(!card||card.getAttribute('data-drag-kind')!=='essay')return;
+  essayThumbDragState={
+    phase:'pending',
+    card:card,
+    container:card.parentElement,
+    oldEssayIndex:Number(card.getAttribute('data-essay-index')),
+    startX:event.clientX,
+    startY:event.clientY,
+    lastX:event.clientX,
+    lastY:event.clientY,
+    offsetX:0,
+    offsetY:0,
+    placeholder:null
+  };
+  window.addEventListener('pointermove',moveEssayThumbDrag);
+  window.addEventListener('pointerup',endEssayThumbDrag);
+  window.addEventListener('pointercancel',endEssayThumbDrag);
+}
+function activateEssayThumbDrag(state){
+  var rect=state.card.getBoundingClientRect();
+  state.phase='dragging';
+  state.offsetX=state.startX-rect.left;
+  state.offsetY=state.startY-rect.top;
+  state.placeholder=document.createElement('div');
+  state.placeholder.className='essay-thumb-placeholder';
+  state.placeholder.style.width=rect.width+'px';
+  state.placeholder.style.height=rect.height+'px';
+  state.card.parentNode.insertBefore(state.placeholder,state.card.nextSibling);
+  state.card.classList.add('dragging');
+  state.card.style.width=rect.width+'px';
+  state.card.style.height=rect.height+'px';
+  state.card.style.position='fixed';
+  state.card.style.left=rect.left+'px';
+  state.card.style.top=rect.top+'px';
+  state.card.style.zIndex='1000';
+  state.card.style.margin='0';
+  state.card.style.pointerEvents='none';
+  document.body.appendChild(state.card);
+}
+function moveEssayThumbDrag(event){
+  var state=essayThumbDragState;
+  if(!state)return;
+  state.lastX=event.clientX;
+  state.lastY=event.clientY;
+  if(state.phase==='pending'){
+    if(Math.abs(event.clientX-state.startX)<6&&Math.abs(event.clientY-state.startY)<6)return;
+    activateEssayThumbDrag(state);
+    essayThumbClickSuppressed=true;
+  }
+  if(state.phase!=='dragging')return;
+  state.card.style.left=(event.clientX-state.offsetX)+'px';
+  state.card.style.top=(event.clientY-state.offsetY)+'px';
+  var essayCards=Array.from(state.container.querySelectorAll('.essay-thumb-card[data-drag-kind="essay"]'));
+  var inserted=false;
+  for(var i=0;i<essayCards.length;i++){
+    var essayCard=essayCards[i];
+    var rect=essayCard.getBoundingClientRect();
+    if(event.clientX<rect.left+rect.width/2){
+      state.container.insertBefore(state.placeholder,essayCard);
+      inserted=true;
+      break;
+    }
+  }
+  if(!inserted){
+    state.container.appendChild(state.placeholder);
+  }
+}
+function cleanupEssayThumbDragState(state){
+  window.removeEventListener('pointermove',moveEssayThumbDrag);
+  window.removeEventListener('pointerup',endEssayThumbDrag);
+  window.removeEventListener('pointercancel',endEssayThumbDrag);
+  if(!state)return;
+  if(state.card){
+    state.card.classList.remove('dragging');
+    state.card.style.position='';
+    state.card.style.left='';
+    state.card.style.top='';
+    state.card.style.width='';
+    state.card.style.height='';
+    state.card.style.zIndex='';
+    state.card.style.margin='';
+    state.card.style.pointerEvents='';
+  }
+  essayThumbDragState=null;
+}
+function endEssayThumbDrag(){
+  var state=essayThumbDragState;
+  if(!state){
+    cleanupEssayThumbDragState(null);
+    return;
+  }
+  if(state.phase!=='dragging'){
+    cleanupEssayThumbDragState(state);
+    return;
+  }
+  var reorderNodes=Array.from(state.container.children).filter(function(node){
+    return node.classList&&(
+      node.classList.contains('essay-thumb-placeholder')||
+      (node.classList.contains('essay-thumb-card')&&node.getAttribute('data-drag-kind')==='essay')
+    );
+  });
+  var newEssayIndex=reorderNodes.indexOf(state.placeholder);
+  if(state.placeholder&&state.placeholder.parentNode){
+    state.placeholder.parentNode.insertBefore(state.card,state.placeholder);
+    state.placeholder.remove();
+  }
+  cleanupEssayThumbDragState(state);
+  if(newEssayIndex<0||newEssayIndex===state.oldEssayIndex){
+    setTimeout(function(){essayThumbClickSuppressed=false;},0);
+    return;
+  }
+  var moved=essayCaptureShots.essay.splice(state.oldEssayIndex,1)[0];
+  essayCaptureShots.essay.splice(newEssayIndex,0,moved);
+  if(essayPreviewActiveKey.indexOf('essay_')===0){
+    var activeIndex=Number(essayPreviewActiveKey.split('_')[1]||0);
+    if(activeIndex===state.oldEssayIndex){
+      essayPreviewActiveKey='essay_'+newEssayIndex;
+    }else if(state.oldEssayIndex<activeIndex&&newEssayIndex>=activeIndex){
+      essayPreviewActiveKey='essay_'+(activeIndex-1);
+    }else if(state.oldEssayIndex>activeIndex&&newEssayIndex<=activeIndex){
+      essayPreviewActiveKey='essay_'+(activeIndex+1);
+    }
+  }
+  renderEssayCapturePreviewPage();
+  showToast('作文图片顺序已调整');
+  setTimeout(function(){essayThumbClickSuppressed=false;},0);
+}
 function getEssayPreviewDataByKey(key){
   if(key==='topic'){
     return {
       key:'topic',
       label:'题目',
       dataUrl:essayCaptureShots.topic,
-      meta:'题目用于识别作文题干、材料和要求，便于批改结果更贴题。'
+      meta:''
     };
   }
   if(key.indexOf('essay_')===0){
@@ -2542,26 +2994,28 @@ function getEssayPreviewDataByKey(key){
       key:key,
       label:'作文第'+(index+1)+'页',
       dataUrl:essayCaptureShots.essay[index]||'',
-      meta:'这是作文正文的第 '+(index+1)+' 张，系统会按顺序整合多张正文后再批改。'
+      meta:''
     };
   }
   return {
     key:'essay_empty',
     label:'作文',
     dataUrl:'',
-    meta:'作文正文还未拍摄，可以继续补拍多张。'
+    meta:''
   };
 }
 function renderEssayCaptureThumbs(containerId){
   var container=document.getElementById(containerId);
   if(!container)return;
   container.innerHTML=getEssayCaptureItems().map(function(item){
-    return '<button class="essay-thumb-card '+(essayPreviewActiveKey===item.key?'active':'')+'" onclick="setEssayPreviewActive(\''+item.key+'\')" type="button">'+
+    var classes='essay-thumb-card '+(essayPreviewActiveKey===item.key?'active ':'')+(item.dragKind==='essay'&&essayCaptureShots.essay.length>1?'draggable':'');
+    return '<button class="'+classes.trim()+'" data-drag-kind="'+item.dragKind+'" data-essay-index="'+item.essayIndex+'" onclick="handleEssayThumbClick(event,\''+item.key+'\')" type="button">'+
+      '<div class="essay-thumb-head"><div class="essay-thumb-label">'+item.label+'</div></div>'+
       '<div class="essay-thumb-shot">'+(item.dataUrl?'<img alt="'+escapeHtml(item.label)+'" src="'+item.dataUrl+'">':'<span>待补拍</span>')+'</div>'+
-      '<div class="essay-thumb-label">'+item.label+'</div>'+
-      '<div class="essay-thumb-sub">'+item.subLabel+'</div>'+
+      '<div class="essay-thumb-footer"><div class="essay-thumb-sub">'+item.subLabel+'</div></div>'+
     '</button>';
   }).join('');
+  bindEssayCaptureThumbDrag(containerId);
 }
 function renderEssayCapturePreviewPage(){
   syncEssaySelectedPhotos();
@@ -2575,7 +3029,6 @@ function renderEssayCapturePreviewPage(){
   var placeholder=document.getElementById('essayPreviewPlaceholder');
   var counter=document.getElementById('essayPreviewCounter');
   var meta=document.getElementById('essayPreviewMetaText');
-  var metaCopy=document.getElementById('essayPreviewMetaCopy');
   if(mainImage){
     if(currentData.dataUrl){
       mainImage.src=currentData.dataUrl;
@@ -2589,64 +3042,182 @@ function renderEssayCapturePreviewPage(){
   }
   if(counter)counter.textContent='当前预览 · '+currentData.label;
   if(meta)meta.textContent='已完成 '+stepCount+' / 2 步 · 作文共 '+essayCount+' 张';
-  if(metaCopy)metaCopy.textContent=currentData.meta;
   renderEssayCaptureThumbs('essayCaptureThumbs');
 }
 function renderEssayReviewLegend(){
-  var legend=document.getElementById('essayReviewLegend');
-  if(!legend)return;
-  if(essayReviewTab==='overall'){
-    legend.innerHTML='<span><i class="point"></i>批注点</span><span><i class="raw"></i>原文</span><span><i class="add"></i>建议补充</span><span><i class="fix"></i>建议修改</span>';
-  }else{
-    legend.innerHTML='<span><i class="raw"></i>原文</span><span><i class="add"></i>新增</span><span><i class="fix"></i>错误</span>';
-  }
+  return;
 }
 function getEssayOverallReviewHtml(){
   return ''+
-    '<div class="essay-review-paragraph">'+
-      '<span class="essay-idx">1</span>张力与缩力是一对相辅相成的概念。'+
-      '<span class="essay-idx">2</span>张力是一种向外突破的力量，缩力是一种内在积蓄的力量，'+
-      '无论二者是否完全相对的，但是张力与缩力是就整体而言，对立统一的。'+
-      '<span class="essay-idx">3</span>而在艺术创作与个人生活之中，即可化抽象为具体，颇为真切地感受这张力与缩力的一番较量，于张缩有度中，方可张力前行。'+
+    '<div class="essay-result-module score">'+
+      '<div class="essay-result-module-title">作文得分</div>'+
+      '<div class="essay-result-score-value">46分（三类文）</div>'+
     '</div>'+
-    '<div class="essay-review-paragraph">'+
-      '<span class="essay-idx">4</span>在艺术创作中，张力赋予作品主动与冲击力，缩力则带来深度与内敛美。'+
-      '<span class="essay-idx">5</span><span class="essay-highlight-red">这一特点，齐白石的《虾》中可感受到是这一艺术理念的完美体现。</span>'+
-      '<span class="essay-idx">6</span>首先是笔锋跃跃下的张力，豪迈有劲，<span class="essay-highlight-blue">却又有一丝谦卑之态</span>，却又极具生动的美感。'+
+    '<div class="essay-result-module">'+
+      '<div class="essay-result-module-title">作文审题</div>'+
+      '<div class="essay-result-copy">你的作文审题符合要求，对“张力与缩力”覆盖全面，对“相辅相成”也点明到位。但对“内外平衡”使用了“张缩有度”等替代表述，未直接点出关键词，导致该部分论述略显模糊。目前处于二档。若要提升至一档，建议明确阐释“内外平衡”的内涵，可通过增加具体事例或哲理分析来深化，同时语言要更贴合原题关键词，避免因替代表述过多而削弱契合度。</div>'+
     '</div>'+
-    '<div class="essay-review-paragraph">'+
-      '<span class="essay-idx">7</span>其次尽管是黑白水墨画，但虾的栩栩如生的形象跃然纸上，'+
-      '<span class="essay-highlight-red">可正因为</span>虾才带来美的深度与内敛。'+
-      '<span class="essay-idx">8</span>不仅如此，热播影视剧《哪吒2》的创作更好地诠释着张缩有度，'+
-      '<span class="essay-highlight-blue">同时，作品中引人注目的深刻文化内涵以及对海外的回应</span>，都让文章更有讨论空间。'+
-    '</div>';
+    '<div class="essay-result-module">'+
+      '<div class="essay-result-module-title">作文立意</div>'+
+      '<div class="essay-result-copy">你的作文立意明确，围绕“张力与缩力”的辩证关系展开，能从艺术和生活两个角度分析。但例子分析较浅，如《哪吒2》未深入探讨二者的互动机制；整体论证缺乏层次和递进，思想深度不足。目前二档。想升一档，需挖掘深层规律，加强逻辑关联，提升论证的说服力。</div>'+
+    '</div>'+
+    '<div class="essay-video-note">—— 点评内容由AI生成，仅供参考 ——</div>';
 }
-function getEssayFullReviewHtml(){
+function getEssayNotebookHtml(){
   return ''+
-    '<div class="essay-full-panel">'+
-      '<div class="essay-full-rail"></div>'+
-      '<div class="essay-full-anchor a1">开头</div>'+
-      '<div class="essay-full-anchor a2">中间</div>'+
-      '<div class="essay-full-anchor a3">结尾</div>'+
-      '<div class="essay-review-paragraph">艺术创作中的张力与缩力，可以通过齐白石《虾》和《哪吒2》等作品具体分析张力和缩力在作品中的体现，以及它们对作品整体效果的影响。</div>'+
-      '<div class="essay-review-paragraph">个人生活中的张力与缩力。通过饺子导演的例子，展示如何在面对困难时，利用张力和缩力的平衡，实现个人目标。</div>'+
-      '<div class="essay-review-paragraph">张力与缩力的哲学思考。讨论张力与缩力在个人成长和人生道路中的意义，以及如何在生活中实现张缩有度。</div>'+
-      '<div class="essay-review-paragraph">总结张力与缩力的重要性，鼓励读者在生活中实现张缩有度，张力前行。</div>'+
-      '<div class="essay-review-feedback"><button type="button" onclick="showToast(\'已记录：有帮助\')">👍</button><button type="button" onclick="showToast(\'已记录：继续优化\')">👎</button></div>'+
-    '</div>';
+    '<div class="essay-result-module">'+
+      '<div class="essay-result-module-title">起评分<span class="essay-result-module-badge">43分（二档）</span></div>'+
+      '<div class="essay-result-copy">该作文符合高考“符合题意”与“中心明确”的二档标准。文章抓住“张力与缩力”的核心概念，从艺术创作与生活两个角度展开论述，体现出对题意的理解。但整体分析较为表面，如对齐白石《虾》与《哪吒2》的例证未能深入揭示张力与缩力之间的相互作用与平衡机制，论证深度不足。结构趋于平面化，段落间缺乏递进关系，例子关联不够紧密。若能在论点展开与逻辑递进方面加强，文章质量将进一步提升。</div>'+
+    '</div>'+
+    '<div class="essay-result-module">'+
+      '<div class="essay-result-module-title">亮点<span class="essay-result-module-badge">+4分</span></div>'+
+      '<div class="essay-result-copy">文章能够围绕“张力与缩力”的核心关系组织内容，并尝试从艺术作品、影视创作和生活态度三个角度展开。尤其是对“张力带来冲击、缩力形成克制”的表达较集中，个别句子能形成较强的观点提示，说明你已经有意识地在用关键词串联全文。</div>'+
+      '<div class="essay-note-button-row">'+
+        '<button class="essay-note-marker-btn highlight" onclick="focusEssayDocMarker(&quot;highlight-1&quot;)" type="button">1</button>'+
+        '<button class="essay-note-marker-btn highlight" onclick="focusEssayDocMarker(&quot;highlight-2&quot;)" type="button">2</button>'+
+        '<button class="essay-note-marker-btn highlight" onclick="focusEssayDocMarker(&quot;highlight-3&quot;)" type="button">3</button>'+
+      '</div>'+
+    '</div>'+
+    '<div class="essay-result-module">'+
+      '<div class="essay-result-module-title">扣分点<span class="essay-result-module-badge">-1分</span></div>'+
+      '<div class="essay-result-copy">局部表达存在错别字、词语搭配不够准确和概念替换过多的问题。例如个别字形书写容易被识别为错字，部分句子用“张缩有度”替代“内外平衡”后，与题干关键词的对应关系变弱。这类问题虽不影响整体立意，但会削弱卷面清晰度和论证严谨性。</div>'+
+      '<div class="essay-note-button-row">'+
+        '<button class="essay-note-marker-btn deduct" onclick="focusEssayDocMarker(&quot;deduct-1&quot;)" type="button">1</button>'+
+        '<button class="essay-note-marker-btn deduct" onclick="focusEssayDocMarker(&quot;deduct-2&quot;)" type="button">2</button>'+
+        '<button class="essay-note-marker-btn deduct" onclick="focusEssayDocMarker(&quot;deduct-3&quot;)" type="button">3</button>'+
+      '</div>'+
+    '</div>'+
+    '<div class="essay-video-note">—— 批改笔记由AI生成，仅供参考 ——</div>';
 }
 function renderEssaySmartReview(){
   var overallTab=document.getElementById('essayReviewTabOverall');
-  var fullTab=document.getElementById('essayReviewTabFull');
+  var notebookTab=document.getElementById('essayReviewTabNotebook');
   var content=document.getElementById('essaySmartReviewContent');
-  var card=document.getElementById('essayReviewScoreCard');
   if(overallTab)overallTab.classList.toggle('active',essayReviewTab==='overall');
-  if(fullTab)fullTab.classList.toggle('active',essayReviewTab==='full');
-  renderEssayReviewLegend();
+  if(notebookTab)notebookTab.classList.toggle('active',essayReviewTab==='notes');
   if(content){
-    content.innerHTML=essayReviewTab==='overall'?getEssayOverallReviewHtml():getEssayFullReviewHtml();
+    content.innerHTML=essayReviewTab==='notes'?getEssayNotebookHtml():getEssayOverallReviewHtml();
   }
-  if(card)card.style.display=essayReviewCardVisible&&essayReviewTab==='overall'?'block':'none';
+  requestAnimationFrame(function(){ensureEssayResultInteractions();});
+}
+function shareEssayReview(){
+  showToast('分享入口已预留');
+}
+function saveEssayReview(){
+  showToast('已保存到本地示意');
+}
+function downloadEssayReport(){
+  showToast('报告下载入口已预留');
+}
+function getEssayResultSheetSnapPoints(){
+  var stage=document.querySelector('#essaySmartReview .essay-result-stage');
+  var height=stage?stage.clientHeight:window.innerHeight;
+  return {
+    expanded:Math.round(height*.25),
+    mid:Math.round(height*.46),
+    collapsed:Math.round(height-250)
+  };
+}
+function setEssayResultSheetTop(top,animate){
+  var sheet=document.getElementById('essayResultSheet');
+  if(!sheet)return;
+  var points=getEssayResultSheetSnapPoints();
+  var minTop=points.expanded;
+  var maxTop=points.collapsed;
+  essayResultSheetTop=Math.max(minTop,Math.min(maxTop,top));
+  sheet.classList.toggle('animating',!!animate);
+  sheet.style.top=essayResultSheetTop+'px';
+  if(animate){
+    clearTimeout(sheet._animTimer);
+    sheet._animTimer=setTimeout(function(){sheet.classList.remove('animating');},260);
+  }
+}
+function snapEssayResultSheet(snap,animate){
+  var points=getEssayResultSheetSnapPoints();
+  essayResultSheetSnap=snap||'mid';
+  setEssayResultSheetTop(points[essayResultSheetSnap]||points.mid,animate!==false);
+}
+function closestEssayResultSnap(top){
+  var points=getEssayResultSheetSnapPoints();
+  var best='mid';
+  var bestDistance=Infinity;
+  Object.keys(points).forEach(function(key){
+    var distance=Math.abs(points[key]-top);
+    if(distance<bestDistance){
+      best=key;
+      bestDistance=distance;
+    }
+  });
+  return best;
+}
+function beginEssayResultSheetDrag(event){
+  if(event.button!==undefined&&event.button!==0)return;
+  var sheet=document.getElementById('essayResultSheet');
+  if(!sheet)return;
+  essayResultSheetDrag={
+    startY:event.clientY,
+    startTop:sheet.getBoundingClientRect().top
+  };
+  sheet.classList.remove('animating');
+  window.addEventListener('pointermove',moveEssayResultSheetDrag);
+  window.addEventListener('pointerup',endEssayResultSheetDrag);
+  window.addEventListener('pointercancel',endEssayResultSheetDrag);
+}
+function moveEssayResultSheetDrag(event){
+  if(!essayResultSheetDrag)return;
+  event.preventDefault();
+  setEssayResultSheetTop(essayResultSheetDrag.startTop+(event.clientY-essayResultSheetDrag.startY),false);
+}
+function endEssayResultSheetDrag(){
+  if(!essayResultSheetDrag)return;
+  window.removeEventListener('pointermove',moveEssayResultSheetDrag);
+  window.removeEventListener('pointerup',endEssayResultSheetDrag);
+  window.removeEventListener('pointercancel',endEssayResultSheetDrag);
+  essayResultSheetDrag=null;
+  snapEssayResultSheet(closestEssayResultSnap(essayResultSheetTop),true);
+}
+function ensureEssayResultInteractions(force){
+  var sheet=document.getElementById('essayResultSheet');
+  if(!sheet)return;
+  if(!essayResultSheetReady||force){
+    var grabber=document.getElementById('essayResultGrabber');
+    var header=document.getElementById('essayResultSheetHeader');
+    if(grabber&&!grabber._dragBound){
+      grabber.addEventListener('pointerdown',beginEssayResultSheetDrag);
+      grabber._dragBound=true;
+    }
+    if(header&&!header._dragBound){
+      header.addEventListener('pointerdown',function(event){
+        if(event.target&&event.target.closest&&event.target.closest('button'))return;
+        beginEssayResultSheetDrag(event);
+      });
+      header._dragBound=true;
+    }
+    window.removeEventListener('resize',handleEssayResultResize);
+    window.addEventListener('resize',handleEssayResultResize);
+    essayResultSheetReady=true;
+  }
+  snapEssayResultSheet(essayResultSheetSnap||'mid',false);
+}
+function handleEssayResultResize(){
+  if(document.getElementById('essaySmartReview')&&document.getElementById('essaySmartReview').classList.contains('active')){
+    snapEssayResultSheet(essayResultSheetSnap||'mid',false);
+  }
+}
+function focusEssayDocMarker(markerId){
+  var marker=document.querySelector('.essay-doc-marker[data-marker-id="'+markerId+'"]');
+  var scroll=document.getElementById('essayDocScroll');
+  var stage=document.getElementById('essayDocStage');
+  if(!(marker&&scroll&&stage))return;
+  var sheetTop=essayResultSheetTop||getEssayResultSheetSnapPoints().mid;
+  var markerCenter=marker.offsetTop+(marker.offsetHeight/2);
+  var targetTop=Math.max(0,markerCenter-(sheetTop*.42));
+  scroll.scrollTo({top:targetTop,behavior:'smooth'});
+  marker.classList.remove('flash');
+  void marker.offsetWidth;
+  marker.classList.add('flash');
+  clearTimeout(marker._flashTimer);
+  marker._flashTimer=setTimeout(function(){marker.classList.remove('flash');},1900);
 }
 function clearEssayLoadingTimer(){
   if(essayLoadingTimer){
@@ -2766,7 +3337,7 @@ function openEssayLoading(){
   var stages=[
     ['正在上传图片','正在识别题目与正文…','系统会先读取题目要求，再识别整篇作文内容。'],
     ['正在理解题意','正在准备文章纠错…','正在结合题目要求，定位病句、错别字和表达不够准确的位置。'],
-    ['正在生成结果','正在汇总综合评价…','即将生成综合评价、全文精批与批改报告。']
+    ['正在生成结果','正在汇总全文点评…','即将生成全文点评、批改笔记与批改报告。']
   ];
   var stageIndex=0;
   function applyLoadingStage(){
@@ -2788,34 +3359,26 @@ function openEssayLoading(){
     renderEssayRecordsPage();
     clearEssayLoadingTimer();
     essayReviewTab='overall';
-    essayReviewCardVisible=true;
     renderEssaySmartReview();
     showPage('essaySmartReview');
-    showToast('已生成综合评价和全文精批');
+    showToast('已生成全文点评和批改笔记');
   },2200);
 }
 function backFromEssaySmartReview(){
   showPage('essayCapturePreview');
 }
 function switchEssayReviewTab(tab){
+  if(tab==='full')tab='notes';
   essayReviewTab=tab;
   renderEssaySmartReview();
 }
-function closeEssayReviewCard(){
-  essayReviewCardVisible=false;
-  renderEssaySmartReview();
-}
 function openEssaySmartReport(){
-  essayReviewCardVisible=false;
   renderEssaySmartReview();
   showPage('essaySmartReport');
 }
 function openEssayPolishView(){
-  essayReviewTab='full';
-  essayReviewCardVisible=false;
-  renderEssaySmartReview();
   showPage('essaySmartReview');
-  showToast('已切换到全文精批');
+  showToast('全文润色入口已预留');
 }
 function retakeEssayFromReview(){
   stopEssayCamera();
@@ -2824,7 +3387,6 @@ function retakeEssayFromReview(){
   essayCaptureShots={topic:null,essay:[]};
   essaySelectedPhotos=[];
   essayReviewTab='overall';
-  essayReviewCardVisible=true;
   renderEssayCapturePage();
   renderEssayCapturePreviewPage();
   renderEssaySmartReview();

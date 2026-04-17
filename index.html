@@ -2,13 +2,13 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <title>AI学习</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display','Helvetica Neue',sans-serif;display:flex;justify-content:center;min-height:100vh}
-.phone{width:390px;min-height:100vh;background:#f2f3f5;position:relative;overflow-x:hidden}
-.page{display:none;min-height:100vh;position:relative}
+body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display','Helvetica Neue',sans-serif;display:flex;justify-content:center;min-height:100vh;min-height:100dvh;overflow-x:hidden}
+.phone{width:min(390px,100vw);min-height:100vh;min-height:100dvh;background:#f2f3f5;position:relative;overflow-x:hidden}
+.page{display:none;min-height:100vh;min-height:100dvh;position:relative}
 .page.active{display:block}
 
 /* ══ 通用 ══ */
@@ -110,7 +110,7 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 .guide-summary-item .value{font-size:13px;font-weight:700;color:#1a1a1a;text-align:right;line-height:1.6}
 .guide-cheer{margin-top:14px;padding:12px 14px;border-radius:16px;background:linear-gradient(135deg,rgba(34,197,94,.14),rgba(16,185,129,.08));color:#15803d;font-size:12px;line-height:1.7;position:relative;z-index:1}
 .guide-recommend{margin-top:14px;padding:12px 14px;border-radius:16px;background:rgba(46,154,186,.08);color:#36627d;font-size:12px;line-height:1.7;position:relative;z-index:1}
-.guide-bottom{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:390px;background:#fff;padding:12px 16px 26px;border-top:1px solid #eef2f5;display:flex;gap:10px;z-index:120}
+.guide-bottom{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(390px,100vw);background:#fff;padding:12px 16px calc(26px + env(safe-area-inset-bottom));border-top:1px solid #eef2f5;display:flex;gap:10px;z-index:120}
 .guide-secondary{width:112px;height:48px;border-radius:24px;border:1px solid #dce6ef;background:#fff;color:#5f7287;font-size:15px;font-weight:700;cursor:pointer}
 .guide-primary{flex:1;height:48px;border:none;border-radius:24px;background:linear-gradient(135deg,#1a1a1a,#333);color:#fff;font-size:15px;font-weight:700;cursor:pointer}
 .guide-secondary:active,.guide-primary:active{transform:scale(.98)}
@@ -489,14 +489,14 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 .play-circle svg{width:14px;height:14px;color:#fff;margin-left:2px}
 .ai-sub{font-size:12px;color:#64748b;position:relative;z-index:1}
 
-.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:390px;background:#fff;display:flex;justify-content:space-around;align-items:flex-start;padding:10px 0 22px;z-index:100;border-top:1px solid #f0f0f0}
+.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(390px,100vw);background:#fff;display:flex;justify-content:space-around;align-items:flex-start;padding:10px 0 calc(22px + env(safe-area-inset-bottom));z-index:100;border-top:1px solid #f0f0f0}
 .bn-item{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;color:#bbb;font-size:10px;min-width:60px;transition:color .15s}
 .bn-item.active{color:#2ab8d8}
 .bn-item svg{width:24px;height:24px}
 
 /* ══ 作文批改流程 ══ */
 .essay-page{background:#000;min-height:100vh}
-.essay-stage{position:relative;width:390px;max-width:100%;margin:0 auto;background:#000}
+.essay-stage{position:relative;width:min(390px,100vw);max-width:100%;margin:0 auto;background:#000}
 .essay-stage img{display:block;width:100%;height:auto}
 .essay-loading-layer{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,10,18,.1),rgba(6,10,18,.35));display:flex;flex-direction:column;justify-content:flex-end}
 .essay-loading-sheet{background:linear-gradient(180deg,rgba(231,246,255,.94),rgba(216,239,250,.98));border-radius:26px 26px 0 0;padding:26px 22px 30px;box-shadow:0 -12px 28px rgba(15,23,42,.16)}
@@ -521,7 +521,7 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 .essay-hotspot.report-teacher-box-2{left:16px;top:666px;width:358px;height:120px;border-radius:14px}
 .essay-hotspot.report-teacher-box-3{left:16px;top:1188px;width:358px;height:120px;border-radius:14px}
 .essay-hotspot.teacher-tab-report{left:28px;top:74px;width:136px;height:54px;border-radius:24px}
-.essay-smart-device{width:390px;max-width:100%;min-height:100vh;margin:0 auto;position:relative;overflow:hidden}
+.essay-smart-device{width:min(390px,100vw);max-width:100%;min-height:100vh;min-height:100dvh;margin:0 auto;position:relative;overflow:hidden}
 .essay-smart-device.camera{background:linear-gradient(180deg,#05070b 0%,#070a11 42%,#10151f 100%);color:#fff}
 .essay-smart-device.loading{background:linear-gradient(180deg,#0b1018 0%,#0f1420 100%);color:#fff}
 .essay-camera-top{display:flex;align-items:center;justify-content:space-between;padding:16px 16px 10px}
@@ -557,7 +557,7 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 .essay-camera-strip-copy{font-size:12px;line-height:1.6;color:rgba(255,255,255,.72)}
 .essay-camera-strip-btn{padding:10px 16px;border:none;border-radius:14px;background:#19e0c9;color:#08323a;font-size:13px;font-weight:800;cursor:pointer}
 .essay-preview-page{background:#0a0f16;color:#fff}
-.essay-preview-shell{width:390px;max-width:100%;min-height:100vh;margin:0 auto;padding:16px 16px 28px;background:#0a0f16}
+.essay-preview-shell{width:min(390px,100vw);max-width:100%;min-height:100vh;min-height:100dvh;margin:0 auto;padding:16px 16px calc(28px + env(safe-area-inset-bottom));background:#0a0f16}
 .essay-preview-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .essay-preview-title{font-size:18px;font-weight:800}
 .essay-preview-sub{font-size:12px;color:#91a0b5;margin-top:4px}
@@ -575,18 +575,18 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 .essay-preview-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:0 36px;text-align:center;color:#6b5c46;font-size:15px;line-height:1.8;z-index:0}
 .essay-preview-meta{display:flex;align-items:center;justify-content:flex-end;gap:12px;margin-top:16px}
 .essay-preview-meta-copy{font-size:12px;line-height:1.7;color:#a9b5c8}
-.essay-thumb-row{display:flex;gap:10px;margin-top:18px;overflow-x:auto;padding-bottom:2px}
-.essay-thumb-card{min-width:112px;height:144px;border-radius:18px;background:#eef2f6;padding:0;position:relative;box-shadow:0 10px 24px rgba(0,0,0,.22);border:none;cursor:pointer;overflow:hidden;flex-shrink:0}
+.essay-thumb-row{display:flex;gap:8px;margin-top:18px;overflow-x:auto;padding:0 2px 2px 0;scroll-snap-type:x proximity}
+.essay-thumb-card{width:clamp(82px,24vw,94px);min-width:clamp(82px,24vw,94px);height:128px;border-radius:18px;background:#eef2f6;padding:0;position:relative;box-shadow:0 10px 24px rgba(0,0,0,.22);border:none;cursor:pointer;overflow:hidden;flex-shrink:0;scroll-snap-align:start}
 .essay-thumb-card.active{outline:2px solid #19e0c9}
 .essay-thumb-card.draggable{cursor:grab}
 .essay-thumb-card.dragging{opacity:.96;box-shadow:0 18px 38px rgba(0,0,0,.34);cursor:grabbing}
-.essay-thumb-placeholder{min-width:112px;height:144px;border-radius:18px;border:2px dashed rgba(25,224,201,.6);background:rgba(255,255,255,.08);flex-shrink:0}
-.essay-thumb-head{height:32px;padding:10px 10px 0;background:#fff;display:flex;align-items:flex-start;justify-content:flex-start}
-.essay-thumb-shot{width:100%;height:84px;overflow:hidden;background:#e5e7eb;display:flex;align-items:center;justify-content:center;color:#7d6b50;font-size:12px}
+.essay-thumb-placeholder{width:clamp(82px,24vw,94px);min-width:clamp(82px,24vw,94px);height:128px;border-radius:18px;border:2px dashed rgba(25,224,201,.6);background:rgba(255,255,255,.08);flex-shrink:0}
+.essay-thumb-head{height:28px;padding:8px 8px 0;background:#fff;display:flex;align-items:flex-start;justify-content:flex-start}
+.essay-thumb-shot{width:100%;height:74px;overflow:hidden;background:#e5e7eb;display:flex;align-items:center;justify-content:center;color:#7d6b50;font-size:11px}
 .essay-thumb-shot img{width:100%;height:100%;object-fit:cover;display:block}
-.essay-thumb-label{font-size:11px;font-weight:800;color:#111;text-align:left}
-.essay-thumb-footer{min-height:28px;padding:6px 10px 8px;background:#fff}
-.essay-thumb-sub{font-size:10px;color:#96a5b7;text-align:left}
+.essay-thumb-label{font-size:10px;font-weight:800;color:#111;text-align:left}
+.essay-thumb-footer{min-height:26px;padding:5px 8px 7px;background:#fff}
+.essay-thumb-sub{font-size:9px;color:#96a5b7;text-align:left;line-height:1.35}
 .essay-preview-actions{display:flex;gap:12px;margin-top:18px}
 .essay-preview-secondary{flex:1;border:none;border-radius:18px;background:rgba(255,255,255,.08);color:#fff;font-size:14px;font-weight:700;padding:14px 16px;cursor:pointer}
 .essay-preview-primary{flex:1.25;border:none;border-radius:18px;background:linear-gradient(135deg,#19e0c9,#14c9db);color:#08323a;font-size:15px;font-weight:800;padding:14px 16px;cursor:pointer;box-shadow:0 14px 28px rgba(20,201,219,.26)}
@@ -610,7 +610,7 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
   radial-gradient(circle at 10% 8%,rgba(208,244,255,.56),transparent 20%),
   radial-gradient(circle at 90% 10%,rgba(191,231,255,.42),transparent 20%),
   linear-gradient(180deg,#eef9ff 0%,#f7fcff 26%,#fbfeff 56%,#ffffff 100%);color:#1a1a1a}
-.essay-review-shell{width:390px;max-width:100%;min-height:100vh;margin:0 auto;padding:0 0 112px}
+.essay-review-shell{width:min(390px,100vw);max-width:100%;min-height:100vh;min-height:100dvh;margin:0 auto;padding:0 0 112px}
 .essay-review-topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 10px;background:rgba(249,253,255,.72);position:sticky;top:0;z-index:4;backdrop-filter:blur(12px);box-shadow:0 8px 24px rgba(108,166,211,.08)}
 .essay-review-back,.essay-review-help{width:34px;height:34px;border:none;border-radius:50%;background:linear-gradient(180deg,#ffffff,#f2f9ff);color:#13314d;font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(198,224,243,.92),0 8px 18px rgba(133,183,218,.12)}
 .essay-review-topmeta{text-align:center}
@@ -644,7 +644,7 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 .essay-full-anchor.a3{bottom:18px}
 .essay-review-feedback{display:flex;gap:10px;margin-top:18px}
 .essay-review-feedback button{width:42px;height:42px;border:none;border-radius:14px;background:linear-gradient(180deg,#f5fbff,#edf6fc);color:#607489;font-size:18px;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(208,228,243,.9)}
-.essay-review-sticky{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:390px;max-width:100%;background:rgba(250,253,255,.96);padding:12px 16px 24px;display:flex;align-items:center;gap:12px;box-shadow:0 -14px 32px rgba(123,177,214,.14);z-index:5;backdrop-filter:blur(14px)}
+.essay-review-sticky{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(390px,100vw);max-width:100%;background:rgba(250,253,255,.96);padding:12px 16px calc(24px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:12px;box-shadow:0 -14px 32px rgba(123,177,214,.14);z-index:5;backdrop-filter:blur(14px)}
 .essay-mini-action{width:68px;border:none;background:transparent;color:#5e7994;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;cursor:pointer}
 .essay-mini-action .ico{width:40px;height:40px;border-radius:14px;background:linear-gradient(180deg,#ffffff,#f0f8ff);display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:inset 0 0 0 1px rgba(202,226,244,.94)}
 .essay-big-action{flex:1;border:none;border-radius:18px;background:linear-gradient(90deg,#9ce7ff 0%,#74d8ff 44%,#88c8ff 100%);color:#083b63;font-size:18px;font-weight:900;padding:16px 18px;cursor:pointer;box-shadow:0 16px 28px rgba(121,192,236,.24)}
@@ -664,7 +664,7 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 .essay-report-list b{color:#162130}
 .essay-score-modal{position:fixed;inset:0;background:rgba(7,12,18,.48);z-index:420;display:none;align-items:flex-end;justify-content:center}
 .essay-score-modal.show{display:flex}
-.essay-score-sheet{width:390px;max-width:100%;background:#fff;border-radius:28px 28px 0 0;padding:22px 18px 28px;box-shadow:0 -18px 42px rgba(15,23,42,.22)}
+.essay-score-sheet{width:min(390px,100vw);max-width:100%;background:#fff;border-radius:28px 28px 0 0;padding:22px 18px calc(28px + env(safe-area-inset-bottom));box-shadow:0 -18px 42px rgba(15,23,42,.22)}
 .essay-score-sheet-title{font-size:21px;font-weight:900;color:#152033}
 .essay-score-sheet-sub{font-size:13px;line-height:1.7;color:#66768a;margin-top:8px}
 .essay-score-options{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
@@ -797,7 +797,7 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 
 /* ══ 结果页复刻版 ══ */
 #essaySmartReview{background:#f5f5f7;min-height:100vh;padding-bottom:108px}
-.essay-video-review-shell{width:390px;max-width:100%;min-height:100vh;margin:0 auto;position:relative;background:#f5f5f7}
+.essay-video-review-shell{width:min(390px,100vw);max-width:100%;min-height:100vh;min-height:100dvh;margin:0 auto;position:relative;background:#f5f5f7}
 .essay-video-review-hero{height:300px;position:relative;overflow:hidden;background:#d9d9d9}
 .essay-video-review-bg{display:block;width:100%;height:100%;object-fit:fill}
 .essay-video-review-top{position:absolute;left:0;right:0;top:0;padding:14px 14px 0;display:flex;align-items:center;justify-content:space-between}
@@ -844,7 +844,7 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 .essay-video-sentence-subtitle{font-size:16px;font-weight:800;color:#2b2b2b;margin-top:16px}
 .essay-video-sentence-polish{font-size:16px;line-height:1.95;color:#3f3f46;margin-top:10px}
 .essay-video-note{padding:24px 6px 4px;text-align:center;font-size:12px;color:#c6c8cc}
-.essay-video-actions{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:390px;max-width:100%;padding:10px 16px 24px;background:rgba(255,255,255,.96);display:flex;align-items:flex-end;gap:14px;border-top:1px solid rgba(0,0,0,.04);box-shadow:0 -6px 20px rgba(15,23,42,.06)}
+.essay-video-actions{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(390px,100vw);max-width:100%;padding:10px 16px calc(24px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);display:flex;align-items:flex-end;gap:14px;border-top:1px solid rgba(0,0,0,.04);box-shadow:0 -6px 20px rgba(15,23,42,.06)}
 .essay-video-mini{border:none;background:transparent;color:#222;cursor:pointer;font-size:12px;display:flex;flex-direction:column;align-items:center;gap:4px}
 .essay-video-mini-ico{width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:24px;line-height:1}
 .essay-video-primary{flex:1;height:50px;border:none;border-radius:25px;background:linear-gradient(90deg,#6356ff,#5e62ff);color:#fff;font-size:19px;font-weight:700;cursor:pointer}
@@ -852,7 +852,7 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 
 /* ══ 批改结果页交互版 ══ */
 #essaySmartReview{background:#fff;padding-bottom:0;overflow:hidden}
-.essay-result-stage{width:390px;max-width:100%;height:100vh;margin:0 auto;position:relative;background:#fff;overflow:hidden;display:flex;flex-direction:column}
+.essay-result-stage{width:min(390px,100vw);max-width:100%;height:100vh;height:100dvh;margin:0 auto;position:relative;background:#fff;overflow:hidden;display:flex;flex-direction:column}
 .essay-result-topbar{position:relative;left:auto;right:auto;top:auto;z-index:8;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 10px 8px;background:#fff;flex-shrink:0}
 .essay-result-topbar button{border:none;cursor:pointer}
 .essay-result-back{width:30px;height:30px;border-radius:50%;background:#f1f3f6;color:#222;font-size:20px;line-height:30px;text-align:center}
@@ -862,7 +862,7 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 .essay-result-tab.active{background:#fff;color:#111;box-shadow:0 4px 12px rgba(15,23,42,.08)}
 .essay-result-tab.active::after{display:none}
 .essay-result-content{flex:1;min-height:0;overflow:hidden;background:#fff}
-.essay-full-review-layout{height:100%;display:grid;grid-template-columns:68% 32%;background:#fff;overflow:hidden}
+.essay-full-review-layout{height:100%;display:grid;grid-template-columns:60% 40%;background:#fff;overflow:hidden}
 .essay-full-review-doc{position:relative;height:100%;overflow:hidden;background:#d7d9dd}
 .essay-doc-scroll{position:relative;inset:auto;height:100%;overflow-y:auto;overflow-x:hidden;background:#dfe3e8;touch-action:pan-y;-webkit-overflow-scrolling:touch}
 .essay-doc-scroll::after{display:none}
@@ -905,18 +905,18 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 .essay-precision-card.yellow::before{background:#ffd21d}
 .essay-precision-card.red{background:#fff0f1}
 .essay-precision-card.red::before{background:#ff2f3b}
-.essay-precision-title{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:15px;font-weight:900;line-height:1.25;color:#222}
+.essay-precision-title{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:17px;font-weight:900;line-height:1.25;color:#222}
 .essay-precision-title.stack{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
-.essay-precision-badge{display:inline-flex;align-items:center;justify-content:center;border-radius:4px;padding:2px 6px;color:#fff;font-size:12px;font-weight:900;line-height:1.2;white-space:nowrap}
-.essay-precision-badge.compact{font-size:11px}
+.essay-precision-badge{display:inline-flex;align-items:center;justify-content:center;border-radius:4px;padding:2px 6px;color:#fff;font-size:14px;font-weight:900;line-height:1.2;white-space:nowrap}
+.essay-precision-badge.compact{font-size:13px}
 .essay-precision-badge.blue{background:#2f80ed}
 .essay-precision-badge.yellow{background:#ffd21d;color:#533f00}
 .essay-precision-badge.red{background:#ff2f3b}
-.essay-precision-copy{font-size:10px;line-height:1.82;color:#20242b}
+.essay-precision-copy{font-size:12px;line-height:1.82;color:#20242b}
 .essay-precision-copy strong,.essay-result-copy strong{font-weight:900}
 .essay-precision-subtitle{font-size:10px;font-weight:800;line-height:1.35;color:#222}
 .essay-precision-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
-.essay-precision-tag{border:none;border-radius:999px;padding:4px 8px;font-size:9px;font-weight:800;line-height:1;color:#fff;cursor:pointer}
+.essay-precision-tag{border:none;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:800;line-height:1;color:#fff;cursor:pointer}
 .essay-precision-tag.blue{background:#2f80ed}
 .essay-precision-tag.yellow{background:#ffd21d;color:#533f00}
 .essay-precision-tag.red{background:#ff525a}
@@ -972,6 +972,23 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 .essay-feedback-actions button{flex:1;height:44px;border:none;border-radius:22px;font-size:15px;font-weight:800;cursor:pointer}
 .essay-feedback-cancel{background:#f1f3f6;color:#4b5563}
 .essay-feedback-submit{background:linear-gradient(90deg,#6356ff,#5e62ff);color:#fff}
+.essay-doc-panel{cursor:zoom-in}
+.essay-doc-lightbox{position:fixed;inset:0;background:rgba(4,7,14,.88);z-index:560;display:none;align-items:center;justify-content:center;padding:16px}
+.essay-doc-lightbox.show{display:flex}
+.essay-doc-lightbox-stage{position:relative;width:min(390px,calc(100vw - 32px));height:min(78vh,78dvh);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.essay-doc-lightbox-image{max-width:100%;max-height:100%;object-fit:contain;transform-origin:center center;transition:transform .18s ease}
+.essay-doc-lightbox-top{position:absolute;left:16px;right:16px;top:max(14px,calc(14px + env(safe-area-inset-top)));display:flex;align-items:center;justify-content:space-between;pointer-events:none}
+.essay-doc-lightbox-close,.essay-doc-lightbox-nav,.essay-doc-lightbox-zoom button{pointer-events:auto}
+.essay-doc-lightbox-close,.essay-doc-lightbox-nav,.essay-doc-lightbox-zoom button{border:none;background:rgba(255,255,255,.12);color:#fff;border-radius:999px;backdrop-filter:blur(10px);cursor:pointer}
+.essay-doc-lightbox-close{width:36px;height:36px;font-size:20px}
+.essay-doc-lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;font-size:18px}
+.essay-doc-lightbox-nav.prev{left:12px}
+.essay-doc-lightbox-nav.next{right:12px}
+.essay-doc-lightbox-bottom{position:absolute;left:16px;right:16px;bottom:max(18px,calc(18px + env(safe-area-inset-bottom)));display:flex;align-items:center;justify-content:center;gap:10px}
+.essay-doc-lightbox-zoom{display:flex;gap:10px}
+.essay-doc-lightbox-zoom button{width:40px;height:40px;font-size:22px;font-weight:700}
+.essay-doc-lightbox-index{color:#fff;font-size:13px;font-weight:700;min-width:58px;text-align:center}
+.essay-doc-lightbox-hint{position:absolute;left:50%;top:calc(50% + 160px);transform:translateX(-50%);color:rgba(255,255,255,.72);font-size:12px}
 
 /* ══ 制定计划页通用 ══ */
 .plan-page{background:#f2f3f5;min-height:100vh;padding-bottom:90px}
@@ -1035,7 +1052,7 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 .day-row .hr-unit{font-size:12px;color:#999;margin-left:2px}
 
 /* 底部固定按钮 */
-.fix-bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:390px;background:#fff;padding:12px 20px 28px;border-top:1px solid #f0f0f0;z-index:100}
+.fix-bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(390px,100vw);background:#fff;padding:12px 20px calc(28px + env(safe-area-inset-bottom));border-top:1px solid #f0f0f0;z-index:100}
 .fix-btn{width:100%;height:48px;border-radius:24px;border:none;font-size:16px;font-weight:700;color:#fff;background:linear-gradient(135deg,#1a1a1a,#333);cursor:pointer;transition:all .15s}
 .fix-btn:active{transform:scale(.97);opacity:.9}
 .fix-btn.blue{background:linear-gradient(135deg,#2e9aba,#2384a4)}
@@ -1051,7 +1068,7 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 /* ══ 考点选择面板 ══ */
 .sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:300;opacity:0;pointer-events:none;transition:opacity .25s}
 .sheet-bg.show{opacity:1;pointer-events:auto}
-.sheet{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(100%);width:390px;max-height:80vh;background:#fff;border-radius:20px 20px 0 0;z-index:301;transition:transform .3s;display:flex;flex-direction:column}
+.sheet{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(100%);width:min(390px,100vw);max-height:80vh;max-height:80dvh;background:#fff;border-radius:20px 20px 0 0;z-index:301;transition:transform .3s;display:flex;flex-direction:column}
 .sheet-bg.show .sheet{transform:translateX(-50%) translateY(0)}
 .sheet-hd{display:flex;justify-content:space-between;align-items:center;padding:18px 20px 14px;border-bottom:1px solid #f0f0f0;flex-shrink:0}
 .sheet-hd .sh-info{font-size:14px;color:#1a1a1a}
@@ -1087,6 +1104,14 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 
 .sheet-bottom{position:absolute;bottom:0;left:0;right:0;background:#fff;padding:12px 20px 28px;border-top:1px solid #f0f0f0}
 .sheet-bottom .fix-btn{background:linear-gradient(135deg,#1a1a1a,#333)}
+@media (max-width:360px){
+  .essay-preview-shell{padding-left:12px;padding-right:12px}
+  .essay-preview-board{padding:14px}
+  .essay-preview-image{height:420px}
+  .essay-thumb-card,.essay-thumb-placeholder{width:78px;min-width:78px;height:118px}
+  .essay-thumb-shot{height:68px}
+  .essay-feedback-box{padding-left:14px;padding-right:14px}
+}
 
 /* ══ 生成中 ══ */
 .generating{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;gap:16px}
@@ -1971,6 +1996,25 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
     </div>
   </div>
 </div>
+<div class="essay-doc-lightbox" id="essayDocLightbox" onclick="closeEssayDocLightbox()">
+  <div class="essay-doc-lightbox-top" onclick="event.stopPropagation()">
+    <button aria-label="关闭大图" class="essay-doc-lightbox-close" onclick="closeEssayDocLightbox()" type="button">×</button>
+  </div>
+  <div class="essay-doc-lightbox-stage" onclick="event.stopPropagation()">
+    <button aria-label="上一张" class="essay-doc-lightbox-nav prev" onclick="stepEssayDocLightbox(-1)" type="button">‹</button>
+    <img alt="作文精批大图" class="essay-doc-lightbox-image" id="essayDocLightboxImage">
+    <button aria-label="下一张" class="essay-doc-lightbox-nav next" onclick="stepEssayDocLightbox(1)" type="button">›</button>
+  </div>
+  <div class="essay-doc-lightbox-bottom" onclick="event.stopPropagation()">
+    <div class="essay-doc-lightbox-zoom">
+      <button aria-label="缩小" onclick="zoomEssayDocLightbox(-0.25)" type="button">－</button>
+      <button aria-label="重置" onclick="resetEssayDocLightboxZoom()" type="button">◎</button>
+      <button aria-label="放大" onclick="zoomEssayDocLightbox(0.25)" type="button">＋</button>
+    </div>
+    <div class="essay-doc-lightbox-index" id="essayDocLightboxIndex">1 / 2</div>
+  </div>
+  <div class="essay-doc-lightbox-hint">点击左右切换，使用下方按钮缩放</div>
+</div>
 <div class="plan-reward-bg" id="planRewardBg" onclick="closePlanRewardAnimation()">
   <div class="plan-reward-box" onclick="event.stopPropagation()">
     <div class="plan-reward-burst">
@@ -2003,6 +2047,9 @@ function showPage(id){
   }
 }
 var essayFeedbackImages=[];
+var essayDocLightboxSources=['突破1.png','突破2.png'];
+var essayDocLightboxIndex=0;
+var essayDocLightboxScale=1;
 function resetEssayFeedbackForm(){
   essayFeedbackImages=[];
   var type=document.getElementById('essayFeedbackType');
@@ -2086,6 +2133,49 @@ function submitEssayFeedback(){
   }
   closeEssayFeedbackModal();
   showToast('已成功提交，感谢您的反馈～');
+}
+function openEssayDocLightbox(index){
+  essayDocLightboxIndex=Math.max(0,Math.min(essayDocLightboxSources.length-1,index||0));
+  essayDocLightboxScale=1;
+  var modal=document.getElementById('essayDocLightbox');
+  if(modal)modal.classList.add('show');
+  renderEssayDocLightbox();
+}
+function closeEssayDocLightbox(){
+  var modal=document.getElementById('essayDocLightbox');
+  if(modal)modal.classList.remove('show');
+}
+function renderEssayDocLightbox(){
+  var image=document.getElementById('essayDocLightboxImage');
+  var index=document.getElementById('essayDocLightboxIndex');
+  var prev=document.querySelector('.essay-doc-lightbox-nav.prev');
+  var next=document.querySelector('.essay-doc-lightbox-nav.next');
+  if(image){
+    image.src=essayDocLightboxSources[essayDocLightboxIndex];
+    image.style.transform='scale('+essayDocLightboxScale+')';
+  }
+  if(index)index.textContent=(essayDocLightboxIndex+1)+' / '+essayDocLightboxSources.length;
+  if(prev){
+    prev.style.opacity=essayDocLightboxIndex<=0?'.45':'1';
+    prev.disabled=essayDocLightboxIndex<=0;
+  }
+  if(next){
+    next.style.opacity=essayDocLightboxIndex>=essayDocLightboxSources.length-1?'.45':'1';
+    next.disabled=essayDocLightboxIndex>=essayDocLightboxSources.length-1;
+  }
+}
+function stepEssayDocLightbox(step){
+  essayDocLightboxIndex=Math.max(0,Math.min(essayDocLightboxSources.length-1,essayDocLightboxIndex+step));
+  essayDocLightboxScale=1;
+  renderEssayDocLightbox();
+}
+function zoomEssayDocLightbox(delta){
+  essayDocLightboxScale=Math.max(1,Math.min(3,essayDocLightboxScale+delta));
+  renderEssayDocLightbox();
+}
+function resetEssayDocLightboxZoom(){
+  essayDocLightboxScale=1;
+  renderEssayDocLightbox();
 }
 
 // ── 登录 / 引导 / 首页 → 计划 ──
@@ -3226,11 +3316,11 @@ function getEssayOverallReviewHtml(){
         '<div class="essay-doc-scroll" id="essayDocScroll">'+
           '<div class="essay-doc-stage" id="essayDocStage">'+
             '<div class="essay-doc-stack">'+
-              '<div class="essay-doc-panel" id="essayDocPanel1">'+
+              '<div class="essay-doc-panel" id="essayDocPanel1" onclick="openEssayDocLightbox(0)">'+
                 '<img alt="作文精批上半部分" class="essay-doc-image" src="突破1.png">'+
                 '<img alt="44分" class="essay-doc-score-badge" src="44分.png">'+
               '</div>'+
-              '<div class="essay-doc-panel" id="essayDocPanel2">'+
+              '<div class="essay-doc-panel" id="essayDocPanel2" onclick="openEssayDocLightbox(1)">'+
                 '<img alt="作文精批下半部分" class="essay-doc-image" src="突破2.png">'+
               '</div>'+
             '</div>'+

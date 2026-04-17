@@ -541,6 +541,7 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 .essay-camera-preview::before,.essay-camera-preview::after{content:'';position:absolute;left:50%;top:0;transform:translateX(-50%);width:1px;height:100%;background:rgba(255,255,255,.18);z-index:2}
 .essay-camera-preview::after{top:50%;left:0;transform:translateY(-50%);width:100%;height:1px}
 .essay-camera-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000}
+.essay-camera-mock-image{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0b0f16;display:none;z-index:1}
 .essay-camera-empty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:0 34px;text-align:center;color:rgba(255,255,255,.8);font-size:14px;line-height:1.8;z-index:1;background:linear-gradient(180deg,rgba(9,12,18,.72),rgba(9,12,18,.44))}
 .essay-camera-focus{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:92px;height:92px;border:2px solid rgba(61,232,199,.8);border-radius:20px;box-shadow:0 0 0 999px rgba(0,0,0,.08);z-index:3}
 .essay-camera-focus::before,.essay-camera-focus::after{content:'';position:absolute;width:16px;height:16px;border:3px solid #3de8c7}
@@ -578,7 +579,7 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 .essay-thumb-row{display:flex;gap:8px;margin-top:18px;overflow-x:auto;padding:0 2px 2px 0;scroll-snap-type:x proximity}
 .essay-thumb-card{width:clamp(82px,24vw,94px);min-width:clamp(82px,24vw,94px);height:128px;border-radius:18px;background:#eef2f6;padding:0;position:relative;box-shadow:0 10px 24px rgba(0,0,0,.22);border:none;cursor:pointer;overflow:hidden;flex-shrink:0;scroll-snap-align:start}
 .essay-thumb-card.active{outline:2px solid #19e0c9}
-.essay-thumb-card.draggable{cursor:grab}
+.essay-thumb-card.draggable{cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
 .essay-thumb-card.dragging{opacity:.96;box-shadow:0 18px 38px rgba(0,0,0,.34);cursor:grabbing}
 .essay-thumb-placeholder{width:clamp(82px,24vw,94px);min-width:clamp(82px,24vw,94px);height:128px;border-radius:18px;border:2px dashed rgba(25,224,201,.6);background:rgba(255,255,255,.08);flex-shrink:0}
 .essay-thumb-head{height:28px;padding:8px 8px 0;background:#fff;display:flex;align-items:flex-start;justify-content:flex-start}
@@ -1715,6 +1716,7 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
     </div>
     <div class="essay-camera-preview">
       <video autoplay class="essay-camera-video" id="essayCameraVideo" muted playsinline></video>
+      <img alt="模拟拍摄预览" class="essay-camera-mock-image" id="essayCameraMockImage">
       <div class="essay-camera-empty" id="essayCameraEmpty">正在连接相机…</div>
       <div class="essay-camera-focus" aria-hidden="true"></div>
     </div>
@@ -2242,6 +2244,9 @@ var essayFlashOn=false;
 var essayCaptureStep='topic';
 var essayPreviewActiveKey='topic';
 var essayCaptureShots={topic:null,essay:[]};
+var essayCaptureOrder=[];
+var essayFakeCaptureAssets=['突破00.png','突破11.png','突破22.png'];
+var essayFakeCaptureIndex=0;
 var essaySelectedPhotos=[];
 var essayThumbDragState=null;
 var essayThumbClickSuppressed=false;
@@ -2717,17 +2722,18 @@ function startNewEssayTask(){
   essayFlashOn=false;
   essayCaptureStep='topic';
   essayPreviewActiveKey='topic';
-  essayCaptureShots={topic:'突破00.png',essay:['突破11.png','突破22.png']};
+  essayCaptureShots={topic:null,essay:[]};
+  essayCaptureOrder=[];
+  essayFakeCaptureIndex=0;
   essaySelectedPhotos=[];
   essayReviewTab='full';
   essayFinalScore=48;
   essayFinalCategory='二类文';
   essayBaseBand='二档';
   essayBaseScore=43;
-  renderEssayCapturePage();
   renderEssayCapturePreviewPage();
   renderEssaySmartReview();
-  showPage('essayCapturePreview');
+  openEssayCapture();
 }
 function openEssayRecordsPage(){
   essayTaskMode='records';
@@ -3001,7 +3007,14 @@ function getEssayCaptureItems(){
       essayIndex:-1
     });
   }
-  return items;
+  var keys=items.map(function(item){return item.key;});
+  essayCaptureOrder=essayCaptureOrder.filter(function(key){return keys.indexOf(key)>-1;});
+  keys.forEach(function(key){
+    if(essayCaptureOrder.indexOf(key)<0)essayCaptureOrder.push(key);
+  });
+  return items.sort(function(a,b){
+    return essayCaptureOrder.indexOf(a.key)-essayCaptureOrder.indexOf(b.key);
+  });
 }
 function syncEssaySelectedPhotos(){
   essaySelectedPhotos=getEssayCaptureItems().filter(function(item){return !!item.dataUrl}).map(function(item){return item.label;});
@@ -3068,6 +3081,7 @@ function renderEssayCapturePage(){
   var stripCopy=document.getElementById('essayCameraStripCopy');
   var stripBtn=document.getElementById('essayCameraStripBtn');
   var flashBtn=document.getElementById('essayFlashBtn');
+  var mockImage=document.getElementById('essayCameraMockImage');
   if(topicStep){
     topicStep.className='essay-camera-step'+(hasEssayTopicShot()?' done':'')+(essayCaptureStep==='topic'?' active':'');
   }
@@ -3092,6 +3106,13 @@ function renderEssayCapturePage(){
     }
   }
   if(flashBtn)flashBtn.innerHTML='<span class="ico">灯</span><span>'+(essayFlashOn?'补光开':'补光灯')+'</span>';
+  if(mockImage){
+    mockImage.removeAttribute('src');
+    mockImage.style.display='none';
+  }
+  if(!essayCameraStream&&!essayCameraStarting){
+    updateEssayCameraStatus('轻触下方快门拍照');
+  }
 }
 function setEssayPreviewActive(key){
   essayPreviewActiveKey=key;
@@ -3111,20 +3132,26 @@ function handleEssayThumbClick(event,key){
 function bindEssayCaptureThumbDrag(containerId){
   var container=document.getElementById(containerId);
   if(!container)return;
-  container.querySelectorAll('.essay-thumb-card[data-drag-kind="essay"]').forEach(function(card){
+  container.querySelectorAll('.essay-thumb-card[data-drag-kind]').forEach(function(card){
     card.onpointerdown=startEssayThumbDrag;
   });
 }
 function startEssayThumbDrag(event){
-  if(getEssayEssayShotCount()<2)return;
+  if(getEssayCaptureItems().filter(function(item){return !!item.dataUrl;}).length<2)return;
   if(event.button!==undefined&&event.button!==0)return;
   var card=event.currentTarget;
-  if(!card||card.getAttribute('data-drag-kind')!=='essay')return;
+  if(!card||card.getAttribute('data-drag-kind')==='empty')return;
+  event.preventDefault();
+  event.stopPropagation();
+  if(card.setPointerCapture&&event.pointerId!==undefined){
+    try{card.setPointerCapture(event.pointerId);}catch(err){}
+  }
   essayThumbDragState={
     phase:'pending',
     card:card,
     container:card.parentElement,
-    oldEssayIndex:Number(card.getAttribute('data-essay-index')),
+    itemKey:card.getAttribute('data-item-key'),
+    pointerId:event.pointerId,
     startX:event.clientX,
     startY:event.clientY,
     lastX:event.clientX,
@@ -3156,11 +3183,14 @@ function activateEssayThumbDrag(state){
   state.card.style.zIndex='1000';
   state.card.style.margin='0';
   state.card.style.pointerEvents='none';
+  state.container.style.overflowX='hidden';
   document.body.appendChild(state.card);
 }
 function moveEssayThumbDrag(event){
   var state=essayThumbDragState;
   if(!state)return;
+  if(state.pointerId!==undefined&&event.pointerId!==undefined&&event.pointerId!==state.pointerId)return;
+  event.preventDefault();
   state.lastX=event.clientX;
   state.lastY=event.clientY;
   if(state.phase==='pending'){
@@ -3171,7 +3201,7 @@ function moveEssayThumbDrag(event){
   if(state.phase!=='dragging')return;
   state.card.style.left=(event.clientX-state.offsetX)+'px';
   state.card.style.top=(event.clientY-state.offsetY)+'px';
-  var essayCards=Array.from(state.container.querySelectorAll('.essay-thumb-card[data-drag-kind="essay"]'));
+  var essayCards=Array.from(state.container.querySelectorAll('.essay-thumb-card[data-drag-kind]:not([data-drag-kind="empty"])'));
   var inserted=false;
   for(var i=0;i<essayCards.length;i++){
     var essayCard=essayCards[i];
@@ -3192,6 +3222,9 @@ function cleanupEssayThumbDragState(state){
   window.removeEventListener('pointercancel',endEssayThumbDrag);
   if(!state)return;
   if(state.card){
+    if(state.card.releasePointerCapture&&state.pointerId!==undefined){
+      try{state.card.releasePointerCapture(state.pointerId);}catch(err){}
+    }
     state.card.classList.remove('dragging');
     state.card.style.position='';
     state.card.style.left='';
@@ -3202,6 +3235,7 @@ function cleanupEssayThumbDragState(state){
     state.card.style.margin='';
     state.card.style.pointerEvents='';
   }
+  if(state.container)state.container.style.overflowX='';
   essayThumbDragState=null;
 }
 function endEssayThumbDrag(){
@@ -3211,39 +3245,34 @@ function endEssayThumbDrag(){
     return;
   }
   if(state.phase!=='dragging'){
+    var pendingKey=state.itemKey;
     cleanupEssayThumbDragState(state);
+    if(pendingKey)setEssayPreviewActive(pendingKey);
     return;
   }
   var reorderNodes=Array.from(state.container.children).filter(function(node){
     return node.classList&&(
       node.classList.contains('essay-thumb-placeholder')||
-      (node.classList.contains('essay-thumb-card')&&node.getAttribute('data-drag-kind')==='essay')
+      (node.classList.contains('essay-thumb-card')&&node.getAttribute('data-drag-kind')!=='empty')
     );
   });
-  var newEssayIndex=reorderNodes.indexOf(state.placeholder);
+  var newOrderKeys=reorderNodes.map(function(node){
+    return node.classList.contains('essay-thumb-placeholder')?state.itemKey:node.getAttribute('data-item-key');
+  });
   if(state.placeholder&&state.placeholder.parentNode){
     state.placeholder.parentNode.insertBefore(state.card,state.placeholder);
     state.placeholder.remove();
   }
   cleanupEssayThumbDragState(state);
-  if(newEssayIndex<0||newEssayIndex===state.oldEssayIndex){
+  var oldIndex=essayCaptureOrder.indexOf(state.itemKey);
+  var newIndex=newOrderKeys.indexOf(state.itemKey);
+  if(newIndex<0||newIndex===oldIndex){
     setTimeout(function(){essayThumbClickSuppressed=false;},0);
     return;
   }
-  var moved=essayCaptureShots.essay.splice(state.oldEssayIndex,1)[0];
-  essayCaptureShots.essay.splice(newEssayIndex,0,moved);
-  if(essayPreviewActiveKey.indexOf('essay_')===0){
-    var activeIndex=Number(essayPreviewActiveKey.split('_')[1]||0);
-    if(activeIndex===state.oldEssayIndex){
-      essayPreviewActiveKey='essay_'+newEssayIndex;
-    }else if(state.oldEssayIndex<activeIndex&&newEssayIndex>=activeIndex){
-      essayPreviewActiveKey='essay_'+(activeIndex-1);
-    }else if(state.oldEssayIndex>activeIndex&&newEssayIndex<=activeIndex){
-      essayPreviewActiveKey='essay_'+(activeIndex+1);
-    }
-  }
+  essayCaptureOrder=newOrderKeys.slice();
   renderEssayCapturePreviewPage();
-  showToast('作文图片顺序已调整');
+  showToast('已调整缩略图顺序');
   setTimeout(function(){essayThumbClickSuppressed=false;},0);
 }
 function getEssayPreviewDataByKey(key){
@@ -3274,9 +3303,11 @@ function getEssayPreviewDataByKey(key){
 function renderEssayCaptureThumbs(containerId){
   var container=document.getElementById(containerId);
   if(!container)return;
-  container.innerHTML=getEssayCaptureItems().map(function(item){
-    var classes='essay-thumb-card '+(essayPreviewActiveKey===item.key?'active ':'')+(item.dragKind==='essay'&&essayCaptureShots.essay.length>1?'draggable':'');
-    return '<button class="'+classes.trim()+'" data-drag-kind="'+item.dragKind+'" data-essay-index="'+item.essayIndex+'" onclick="handleEssayThumbClick(event,\''+item.key+'\')" type="button">'+
+  var items=getEssayCaptureItems();
+  var draggableCount=items.filter(function(item){return !!item.dataUrl;}).length;
+  container.innerHTML=items.map(function(item){
+    var classes='essay-thumb-card '+(essayPreviewActiveKey===item.key?'active ':'')+(item.dragKind!=='empty'&&draggableCount>1?'draggable':'');
+    return '<button class="'+classes.trim()+'" data-drag-kind="'+item.dragKind+'" data-item-key="'+item.key+'" data-essay-index="'+item.essayIndex+'" onclick="handleEssayThumbClick(event,\''+item.key+'\')" type="button">'+
       '<div class="essay-thumb-head"><div class="essay-thumb-label">'+item.label+'</div></div>'+
       '<div class="essay-thumb-shot">'+(item.dataUrl?'<img alt="'+escapeHtml(item.label)+'" src="'+item.dataUrl+'">':'<span>待补拍</span>')+'</div>'+
       '<div class="essay-thumb-footer"><div class="essay-thumb-sub">'+item.subLabel+'</div></div>'+
@@ -3575,8 +3606,7 @@ function openEssayCapture(){
   clearEssayLoadingTimer();
   renderEssayCapturePage();
   showPage('essayCapture');
-  stopEssayCamera();
-  updateEssayCameraStatus('已关闭相机调用，可使用相册补充图片。');
+  startEssayCamera();
 }
 function backFromEssaySummary(){
   clearEssayLoadingTimer();
@@ -3634,17 +3664,12 @@ function handleEssayFileSelect(event){
   reader.readAsDataURL(file);
 }
 function captureEssayStep(){
-  var video=document.getElementById('essayCameraVideo');
-  var canvas=document.getElementById('essayCameraCanvas');
-  if(!(video&&canvas&&essayCameraStream&&video.videoWidth&&video.videoHeight)){
-    showToast('相机还没准备好，可稍候再试或先从相册导入');
+  if(essayFakeCaptureIndex>=essayFakeCaptureAssets.length){
+    showToast('三张照片都已拍好，点击“去确认”继续');
     return;
   }
-  canvas.width=video.videoWidth;
-  canvas.height=video.videoHeight;
-  var context=canvas.getContext('2d');
-  context.drawImage(video,0,0,canvas.width,canvas.height);
-  captureEssayResult(canvas.toDataURL('image/jpeg',0.92),false);
+  captureEssayResult(essayFakeCaptureAssets[essayFakeCaptureIndex],false);
+  essayFakeCaptureIndex++;
 }
 function toggleEssayFlash(){
   essayFlashOn=!essayFlashOn;
@@ -3726,13 +3751,14 @@ function retakeEssayFromReview(){
   stopEssayCamera();
   essayCaptureStep='topic';
   essayPreviewActiveKey='topic';
-  essayCaptureShots={topic:'突破00.png',essay:['突破11.png','突破22.png']};
+  essayCaptureShots={topic:null,essay:[]};
+  essayCaptureOrder=[];
+  essayFakeCaptureIndex=0;
   essaySelectedPhotos=[];
   essayReviewTab='full';
-  renderEssayCapturePage();
   renderEssayCapturePreviewPage();
   renderEssaySmartReview();
-  showPage('essayCapturePreview');
+  openEssayCapture();
 }
 function resumeEssayCaptureFromPreview(){
   essayCaptureStep=essayPreviewActiveKey==='topic'?'topic':'essay';

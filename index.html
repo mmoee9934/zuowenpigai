@@ -591,8 +591,8 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 .essay-preview-secondary{flex:1;border:none;border-radius:18px;background:rgba(255,255,255,.08);color:#fff;font-size:14px;font-weight:700;padding:14px 16px;cursor:pointer}
 .essay-preview-primary{flex:1.25;border:none;border-radius:18px;background:linear-gradient(135deg,#19e0c9,#14c9db);color:#08323a;font-size:15px;font-weight:800;padding:14px 16px;cursor:pointer;box-shadow:0 14px 28px rgba(20,201,219,.26)}
 .essay-loading-top{display:flex;align-items:center;justify-content:space-between;padding:16px 16px 10px}
-.essay-loading-preview{margin:0 16px;position:relative;height:560px;border-radius:28px;overflow:hidden;background:linear-gradient(180deg,#f5ecdc,#fffefa)}
-.essay-loading-preview-image{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#f5ecdc}
+.essay-loading-preview{margin:0 16px;position:relative;height:560px;border-radius:28px;overflow:hidden;background:transparent}
+.essay-loading-preview-image{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:transparent}
 .essay-loading-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,10,14,.04),rgba(7,10,14,.62));display:flex;align-items:flex-end}
 .essay-loading-panel{width:100%;padding:26px 22px 30px;background:linear-gradient(180deg,rgba(7,11,17,.72),rgba(7,11,17,.9));backdrop-filter:blur(10px)}
 .essay-loading-status{font-size:15px;color:#8de6d8;font-weight:800;letter-spacing:.6px}
@@ -868,10 +868,14 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 .essay-doc-scroll::after{display:none}
 .essay-doc-stage{position:relative;width:100%;min-height:100%;margin-left:0;overflow:visible}
 .essay-doc-stack{display:flex;flex-direction:column;gap:0;padding-top:14px}
+.essay-doc-stack::after{content:'';display:block;height:var(--essay-doc-bottom-fill,0px);background:#dfe3e8}
 .essay-doc-panel{position:relative}
 .essay-doc-panel.flash{animation:essayPanelFlash .92s ease-in-out 2}
 .essay-doc-image{position:relative;left:auto;top:auto;display:block;width:100%;height:auto;max-width:100%;transform:none;user-select:none;-webkit-user-drag:none}
 .essay-doc-score-badge{position:absolute;right:8px;top:8px;width:64px;height:auto;z-index:5;pointer-events:none}
+.essay-doc-separator{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#dfe3e8}
+.essay-doc-separator::before,.essay-doc-separator::after{content:'';flex:1;height:1px;background:rgba(71,85,105,.28)}
+.essay-doc-separator span{flex-shrink:0;padding:2px 8px;border-radius:999px;background:rgba(255,255,255,.74);color:#64748b;font-size:11px;font-weight:800;letter-spacing:.2px}
 .essay-doc-anchor{position:absolute;left:0;width:1px;height:1px;opacity:0;pointer-events:none}
 .essay-doc-marker{position:absolute;z-index:3;pointer-events:none}
 .essay-doc-marker.line{height:5px;border-radius:999px;background:rgba(255,221,74,.88);box-shadow:0 0 0 1px rgba(255,189,0,.28)}
@@ -2707,12 +2711,13 @@ function createEssayRecordFromTask(){
   };
 }
 function startNewEssayTask(){
+  stopEssayCamera();
   essayTaskMode='new';
   activeEssayRecordId='';
   essayFlashOn=false;
   essayCaptureStep='topic';
   essayPreviewActiveKey='topic';
-  essayCaptureShots={topic:null,essay:[]};
+  essayCaptureShots={topic:'突破00.png',essay:['突破11.png','突破22.png']};
   essaySelectedPhotos=[];
   essayReviewTab='full';
   essayFinalScore=48;
@@ -2722,7 +2727,7 @@ function startNewEssayTask(){
   renderEssayCapturePage();
   renderEssayCapturePreviewPage();
   renderEssaySmartReview();
-  openEssayScoreModal();
+  showPage('essayCapturePreview');
 }
 function openEssayRecordsPage(){
   essayTaskMode='records';
@@ -3320,6 +3325,7 @@ function getEssayOverallReviewHtml(){
                 '<img alt="作文精批上半部分" class="essay-doc-image" src="突破1.png">'+
                 '<img alt="44分" class="essay-doc-score-badge" src="44分.png">'+
               '</div>'+
+              '<div class="essay-doc-separator"><span>第 2 页</span></div>'+
               '<div class="essay-doc-panel" id="essayDocPanel2" onclick="openEssayDocLightbox(1)">'+
                 '<img alt="作文精批下半部分" class="essay-doc-image" src="突破2.png">'+
               '</div>'+
@@ -3410,6 +3416,20 @@ function renderEssaySmartReview(){
       ?'<div class="essay-notebook-scroll">'+getEssayNotebookHtml()+'</div>'
       :getEssayOverallReviewHtml();
   }
+  requestAnimationFrame(syncEssayFullReviewLayout);
+}
+function syncEssayFullReviewLayout(){
+  var content=document.getElementById('essaySmartReviewContent');
+  if(!content)return;
+  if(essayReviewTab!=='full'){
+    content.style.removeProperty('--essay-doc-bottom-fill');
+    return;
+  }
+  var firstCard=content.querySelector('.essay-full-review-side .essay-precision-card');
+  var docStack=content.querySelector('.essay-doc-stack');
+  if(!(firstCard&&docStack))return;
+  var fillHeight=Math.max(0,Math.round(firstCard.getBoundingClientRect().height));
+  docStack.style.setProperty('--essay-doc-bottom-fill',fillHeight+'px');
 }
 function shareEssayReview(){
   showToast('分享入口已预留');
@@ -3513,6 +3533,7 @@ function ensureEssayResultInteractions(force){
 function handleEssayResultResize(){
   if(document.getElementById('essaySmartReview')&&document.getElementById('essaySmartReview').classList.contains('active')){
     snapEssayResultSheet(essayResultSheetSnap||'mid',false);
+    requestAnimationFrame(syncEssayFullReviewLayout);
   }
 }
 function focusEssayDocMarker(markerId){
@@ -3554,7 +3575,8 @@ function openEssayCapture(){
   clearEssayLoadingTimer();
   renderEssayCapturePage();
   showPage('essayCapture');
-  startEssayCamera();
+  stopEssayCamera();
+  updateEssayCameraStatus('已关闭相机调用，可使用相册补充图片。');
 }
 function backFromEssaySummary(){
   clearEssayLoadingTimer();
@@ -3704,14 +3726,13 @@ function retakeEssayFromReview(){
   stopEssayCamera();
   essayCaptureStep='topic';
   essayPreviewActiveKey='topic';
-  essayCaptureShots={topic:null,essay:[]};
+  essayCaptureShots={topic:'突破00.png',essay:['突破11.png','突破22.png']};
   essaySelectedPhotos=[];
   essayReviewTab='full';
   renderEssayCapturePage();
   renderEssayCapturePreviewPage();
   renderEssaySmartReview();
-  showPage('essayCapture');
-  startEssayCamera();
+  showPage('essayCapturePreview');
 }
 function resumeEssayCaptureFromPreview(){
   essayCaptureStep=essayPreviewActiveKey==='topic'?'topic':'essay';

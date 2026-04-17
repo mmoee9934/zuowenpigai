@@ -562,7 +562,7 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 .essay-preview-title{font-size:18px;font-weight:800}
 .essay-preview-sub{font-size:12px;color:#91a0b5;margin-top:4px}
 .essay-preview-board{background:#0a0f16;border-radius:28px;padding:18px;border:1px solid rgba(255,255,255,.06);box-shadow:0 22px 36px rgba(0,0,0,.28)}
-.essay-preview-image{height:458px;border-radius:22px;background:linear-gradient(180deg,#f5ecdc,#fffefa);position:relative;overflow:hidden;padding:18px 16px}
+.essay-preview-image{height:458px;border-radius:22px;background:#e5e7eb;position:relative;overflow:hidden;padding:18px 16px}
 .essay-preview-image::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(252,252,252,.08),rgba(0,0,0,.02))}
 .essay-preview-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(198,146,97,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(198,146,97,.08) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
 .essay-preview-lines{position:relative;z-index:1}
@@ -571,7 +571,7 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 .essay-preview-line.mid{width:82%}
 .essay-preview-line.long{width:96%}
 .essay-preview-badge{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);padding:8px 14px;border-radius:999px;background:rgba(7,10,15,.74);color:#fff;font-size:13px;font-weight:700;backdrop-filter:blur(8px)}
-.essay-preview-main-image{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:1;background:#f3ebdc}
+.essay-preview-main-image{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:1;background:#e5e7eb}
 .essay-preview-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:0 36px;text-align:center;color:#6b5c46;font-size:15px;line-height:1.8;z-index:0}
 .essay-preview-meta{display:flex;align-items:center;justify-content:flex-end;gap:12px;margin-top:16px}
 .essay-preview-meta-copy{font-size:12px;line-height:1.7;color:#a9b5c8}
@@ -582,7 +582,7 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 .essay-thumb-card.dragging{opacity:.96;box-shadow:0 18px 38px rgba(0,0,0,.34);cursor:grabbing}
 .essay-thumb-placeholder{min-width:112px;height:144px;border-radius:18px;border:2px dashed rgba(25,224,201,.6);background:rgba(255,255,255,.08);flex-shrink:0}
 .essay-thumb-head{height:32px;padding:10px 10px 0;background:#fff;display:flex;align-items:flex-start;justify-content:flex-start}
-.essay-thumb-shot{width:100%;height:84px;overflow:hidden;background:#f0e6d2;display:flex;align-items:center;justify-content:center;color:#7d6b50;font-size:12px}
+.essay-thumb-shot{width:100%;height:84px;overflow:hidden;background:#e5e7eb;display:flex;align-items:center;justify-content:center;color:#7d6b50;font-size:12px}
 .essay-thumb-shot img{width:100%;height:100%;object-fit:cover;display:block}
 .essay-thumb-label{font-size:11px;font-weight:800;color:#111;text-align:left}
 .essay-thumb-footer{min-height:28px;padding:6px 10px 8px;background:#fff}
@@ -851,19 +851,37 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 .essay-video-primary:active,.essay-video-mini:active,.essay-video-tab:active,.essay-video-sentence-dot:active,.essay-video-back:active,.essay-video-feedback:active{transform:scale(.98)}
 
 /* ══ 批改结果页交互版 ══ */
-#essaySmartReview{background:#dfe3e8;padding-bottom:0;overflow:hidden}
-.essay-result-stage{width:390px;max-width:100%;height:100vh;margin:0 auto;position:relative;background:#dfe3e8;overflow:hidden}
-.essay-doc-scroll{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;background:#dfe3e8;touch-action:pan-y}
-.essay-doc-scroll::after{content:'';display:block;height:280px}
-.essay-doc-stage{position:relative;width:150%;margin-left:-25%;min-height:100%}
-.essay-doc-image{display:block;width:100%;height:auto;user-select:none;-webkit-user-drag:none}
-.essay-result-topbar{position:absolute;left:0;right:0;top:0;z-index:8;display:flex;justify-content:space-between;align-items:center;padding:48px 16px 0;pointer-events:none}
-.essay-result-topbar button{pointer-events:auto;border:none;cursor:pointer}
-.essay-result-back{width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;font-size:20px;line-height:30px;text-align:center}
-.essay-result-feedback{height:30px;border-radius:8px;background:rgba(0,0,0,.55);color:#fff;font-size:13px;padding:0 10px}
+#essaySmartReview{background:#fff;padding-bottom:0;overflow:hidden}
+.essay-result-stage{width:390px;max-width:100%;height:100vh;margin:0 auto;position:relative;background:#fff;overflow:hidden;display:flex;flex-direction:column}
+.essay-result-topbar{position:relative;left:auto;right:auto;top:auto;z-index:8;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 10px 8px;background:#fff;flex-shrink:0}
+.essay-result-topbar button{border:none;cursor:pointer}
+.essay-result-back{width:30px;height:30px;border-radius:50%;background:#f1f3f6;color:#222;font-size:20px;line-height:30px;text-align:center}
+.essay-result-feedback{height:30px;border-radius:999px;background:#f1f3f6;color:#444;font-size:12px;padding:0 10px;white-space:nowrap}
+.essay-result-tabs{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:4px;background:#f3f5fa;border-radius:999px}
+.essay-result-tab{position:relative;flex:1;border:none;border-radius:999px;background:transparent;color:#6b7280;font-size:14px;font-weight:800;padding:8px 0;cursor:pointer}
+.essay-result-tab.active{background:#fff;color:#111;box-shadow:0 4px 12px rgba(15,23,42,.08)}
+.essay-result-tab.active::after{display:none}
+.essay-result-content{flex:1;min-height:0;overflow:hidden;background:#fff}
+.essay-full-review-layout{height:100%;display:grid;grid-template-columns:68% 32%;background:#fff;overflow:hidden}
+.essay-full-review-doc{position:relative;height:100%;overflow:hidden;background:#d7d9dd}
+.essay-doc-scroll{position:relative;inset:auto;height:100%;overflow-y:auto;overflow-x:hidden;background:#dfe3e8;touch-action:pan-y;-webkit-overflow-scrolling:touch}
+.essay-doc-scroll::after{display:none}
+.essay-doc-stage{position:relative;width:100%;min-height:100%;margin-left:0;overflow:visible}
+.essay-doc-stack{display:flex;flex-direction:column;gap:0;padding-top:14px}
+.essay-doc-panel{position:relative}
+.essay-doc-panel.flash{animation:essayPanelFlash .92s ease-in-out 2}
+.essay-doc-image{position:relative;left:auto;top:auto;display:block;width:100%;height:auto;max-width:100%;transform:none;user-select:none;-webkit-user-drag:none}
+.essay-doc-score-badge{position:absolute;right:8px;top:8px;width:64px;height:auto;z-index:5;pointer-events:none}
+.essay-doc-anchor{position:absolute;left:0;width:1px;height:1px;opacity:0;pointer-events:none}
 .essay-doc-marker{position:absolute;z-index:3;pointer-events:none}
 .essay-doc-marker.line{height:5px;border-radius:999px;background:rgba(255,221,74,.88);box-shadow:0 0 0 1px rgba(255,189,0,.28)}
+.essay-doc-marker.blue{border-radius:0;background:rgba(48,133,255,.42);box-shadow:0 0 0 1px rgba(48,133,255,.12)}
+.essay-doc-marker.yellow{height:2px;border-radius:999px;background:rgba(255,207,24,.95);box-shadow:0 0 0 1px rgba(255,207,24,.2)}
 .essay-doc-marker.circle{border:3px solid rgba(239,68,68,.92);border-radius:50%;background:rgba(239,68,68,.04);box-shadow:0 0 0 1px rgba(255,255,255,.36)}
+.essay-doc-badge{position:absolute;z-index:4;display:flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;font-size:10px;font-weight:900;box-shadow:0 0 0 2px rgba(255,255,255,.78)}
+.essay-doc-badge.blue{background:#2f80ed;color:#fff}
+.essay-doc-badge.yellow{background:#ffd21d;color:#7a5300}
+.essay-doc-red-note{position:absolute;z-index:4;color:#ef4444;font-size:14px;font-weight:900;text-shadow:0 1px 0 rgba(255,255,255,.8)}
 .essay-doc-marker.flash{animation:essayMarkerFlash .92s ease-in-out 2}
 .essay-doc-marker.circle.flash{animation:essayCircleFlash .92s ease-in-out 2}
 @keyframes essayMarkerFlash{
@@ -874,31 +892,86 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
   0%,100%{filter:none;transform:scale(1)}
   50%{filter:drop-shadow(0 0 14px rgba(239,68,68,.95));transform:scale(1.14)}
 }
-.essay-result-sheet{position:absolute;left:0;right:0;bottom:84px;top:46vh;z-index:6;background:#fff;border-radius:28px 28px 0 0;box-shadow:0 -10px 28px rgba(15,23,42,.13);display:flex;flex-direction:column;overflow:hidden;touch-action:auto}
-.essay-result-sheet.animating{transition:top .24s cubic-bezier(.2,.8,.2,1)}
-.essay-result-grabber{width:48px;height:5px;border-radius:999px;background:#d7d7d7;margin:10px auto 2px;flex-shrink:0;cursor:grab;touch-action:none}
-.essay-result-grabber:active{cursor:grabbing}
-.essay-result-tabs{display:flex;align-items:center;justify-content:space-around;padding:10px 26px 8px;flex-shrink:0;touch-action:none}
-.essay-result-tab{position:relative;flex:1;border:none;background:transparent;color:#444;font-size:17px;font-weight:700;padding:10px 0 13px;cursor:pointer}
-.essay-result-tab.active{color:#111}
-.essay-result-tab.active::after{content:'';position:absolute;left:50%;bottom:0;transform:translateX(-50%) rotate(-6deg);width:36px;height:5px;border-radius:999px;background:#6b5cff}
-.essay-result-body{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;padding:8px 18px 28px;overscroll-behavior:contain}
+@keyframes essayPanelFlash{
+  0%,100%{box-shadow:none}
+  50%{box-shadow:inset 0 0 0 3px rgba(47,128,237,.45),0 0 0 3px rgba(255,255,255,.55)}
+}
+.essay-full-review-side{height:100%;overflow:auto;-webkit-overflow-scrolling:touch;padding:7px 6px 14px;background:#fff}
+.essay-precision-card{position:relative;border-radius:5px;margin:0 0 10px;padding:10px 8px 8px 10px;font-size:8px;line-height:1.78;color:#20242b;letter-spacing:.05em}
+.essay-precision-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;border-radius:2px 0 0 2px}
+.essay-precision-card.blue{background:#f0f4ff}
+.essay-precision-card.blue::before{background:#2f80ed}
+.essay-precision-card.yellow{background:#fff9e6}
+.essay-precision-card.yellow::before{background:#ffd21d}
+.essay-precision-card.red{background:#fff0f1}
+.essay-precision-card.red::before{background:#ff2f3b}
+.essay-precision-title{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:15px;font-weight:900;line-height:1.25;color:#222}
+.essay-precision-title.stack{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.essay-precision-badge{display:inline-flex;align-items:center;justify-content:center;border-radius:4px;padding:2px 6px;color:#fff;font-size:12px;font-weight:900;line-height:1.2;white-space:nowrap}
+.essay-precision-badge.compact{font-size:11px}
+.essay-precision-badge.blue{background:#2f80ed}
+.essay-precision-badge.yellow{background:#ffd21d;color:#533f00}
+.essay-precision-badge.red{background:#ff2f3b}
+.essay-precision-copy{font-size:10px;line-height:1.82;color:#20242b}
+.essay-precision-copy strong,.essay-result-copy strong{font-weight:900}
+.essay-precision-subtitle{font-size:10px;font-weight:800;line-height:1.35;color:#222}
+.essay-precision-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+.essay-precision-tag{border:none;border-radius:999px;padding:4px 8px;font-size:9px;font-weight:800;line-height:1;color:#fff;cursor:pointer}
+.essay-precision-tag.blue{background:#2f80ed}
+.essay-precision-tag.yellow{background:#ffd21d;color:#533f00}
+.essay-precision-tag.red{background:#ff525a}
+.essay-notebook-scroll{height:100%;overflow:auto;-webkit-overflow-scrolling:touch;padding:12px 16px 28px;background:#f5f6fa}
+.essay-result-body{height:100%;overflow:auto;-webkit-overflow-scrolling:touch;padding:8px 18px 28px;overscroll-behavior:contain}
 .essay-result-module{background:#fff;border-radius:22px;padding:16px 14px;margin-bottom:14px;box-shadow:0 8px 22px rgba(15,23,42,.05);border:1px solid #f0f1f4}
 .essay-result-module.score{background:linear-gradient(135deg,#f6f4ff,#eefbff)}
+.essay-result-module.image-only{padding:0;overflow:hidden}
 .essay-result-module-title{font-size:18px;font-weight:800;color:#151515;line-height:1.35}
 .essay-result-score-value{font-size:30px;font-weight:900;color:#5f52ff;margin-top:8px;letter-spacing:.2px}
 .essay-result-copy{font-size:15px;line-height:1.9;color:#333;margin-top:10px}
 .essay-result-module-badge{display:inline-flex;align-items:center;height:26px;border-radius:999px;padding:0 10px;margin-left:6px;background:#f6f0ff;color:#6b5cff;font-size:13px;font-weight:800;vertical-align:2px}
+.essay-result-module-badge.danger{background:#ffe8e8;color:#d92d20}
+.essay-result-module-badge.warning{background:#fff4bf;color:#b7791f}
+.essay-result-card-image{display:block;width:100%;height:auto}
 .essay-note-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
 .essay-note-marker-btn{width:34px;height:34px;border:none;border-radius:50%;background:#f4f5f7;color:#333;font-size:15px;font-weight:800;cursor:pointer}
 .essay-note-marker-btn.highlight{background:#fff0a6;color:#7a4b00}
 .essay-note-marker-btn.deduct{background:#ffe8e8;color:#c52121}
 .essay-note-marker-btn:active{transform:scale(.94)}
-.essay-result-actionbar{position:absolute;left:0;right:0;bottom:0;z-index:7;background:#fff;padding:10px 16px 24px;display:flex;align-items:flex-end;gap:14px;border-top:1px solid rgba(0,0,0,.05);box-shadow:0 -6px 20px rgba(15,23,42,.06)}
+.essay-note-quote{margin-top:12px;padding:10px 12px;border-radius:14px;background:#faf7ef;color:#6b4f12;font-size:13px;line-height:1.8}
+.essay-note-quote + .essay-note-quote{margin-top:8px}
+.essay-note-quote strong{color:#b7791f}
+.essay-note-emphasis{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap}
+.essay-note-emphasis span{display:inline-flex;align-items:center;padding:5px 10px;border-radius:999px;background:#ffe8e8;color:#d92d20;font-size:13px;font-weight:900}
+.essay-note-rule-wrap{margin-top:12px;border-radius:16px;overflow:hidden;border:1px solid #eceef4;background:#fff}
+.essay-note-rule-image{display:block;width:100%;height:auto}
+.essay-result-actionbar{display:none}
 .essay-result-mini{width:58px;border:none;background:transparent;color:#222;cursor:pointer;font-size:12px;display:flex;flex-direction:column;align-items:center;gap:4px}
 .essay-result-mini-ico{width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:24px;line-height:1}
 .essay-result-download{flex:1;height:50px;border:none;border-radius:25px;background:linear-gradient(90deg,#6356ff,#5e62ff);color:#fff;font-size:18px;font-weight:800;cursor:pointer}
 .essay-result-download:active,.essay-result-mini:active,.essay-result-tab:active,.essay-result-back:active,.essay-result-feedback:active{transform:scale(.98)}
+.essay-feedback-modal{position:fixed;inset:0;background:rgba(8,12,20,.48);z-index:520;display:none;align-items:center;justify-content:center;padding:18px}
+.essay-feedback-modal.show{display:flex}
+.essay-feedback-box{width:358px;max-width:100%;max-height:88vh;overflow:auto;background:#fff;border-radius:24px;padding:20px 18px 16px;box-shadow:0 22px 54px rgba(15,23,42,.24)}
+.essay-feedback-title{font-size:20px;font-weight:900;color:#111827;text-align:center;margin-bottom:18px}
+.essay-feedback-field{margin-bottom:15px}
+.essay-feedback-label{display:flex;align-items:center;gap:4px;font-size:14px;font-weight:800;color:#1f2937;margin-bottom:8px}
+.essay-feedback-label::after{content:'*';color:#ef4444;font-size:13px}
+.essay-feedback-select,.essay-feedback-textarea{width:100%;border:1px solid #e2e8f0;background:#f8fafc;border-radius:14px;font-size:14px;color:#111827;outline:none}
+.essay-feedback-select{height:46px;padding:0 12px}
+.essay-feedback-select.placeholder{color:#a3aab6}
+.essay-feedback-select:focus,.essay-feedback-textarea:focus{border-color:#5e62ff;box-shadow:0 0 0 3px rgba(94,98,255,.12);background:#fff}
+.essay-feedback-textarea{height:112px;resize:none;padding:12px;line-height:1.55}
+.essay-feedback-textarea::placeholder{color:#a3aab6}
+.essay-feedback-upload-grid{display:flex;gap:10px;flex-wrap:wrap}
+.essay-feedback-upload-btn,.essay-feedback-thumb{width:68px;height:68px;border-radius:16px}
+.essay-feedback-upload-btn{border:1px dashed #cbd5e1;background:#f8fafc;color:#7c8798;font-size:26px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.essay-feedback-thumb{position:relative;overflow:hidden;background:#eef2f7;border:1px solid #e2e8f0}
+.essay-feedback-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.essay-feedback-delete{position:absolute;right:4px;top:4px;width:20px;height:20px;border:none;border-radius:50%;background:rgba(0,0,0,.58);color:#fff;font-size:14px;line-height:20px;cursor:pointer}
+.essay-feedback-actions{display:flex;gap:12px;margin-top:18px}
+.essay-feedback-actions button{flex:1;height:44px;border:none;border-radius:22px;font-size:15px;font-weight:800;cursor:pointer}
+.essay-feedback-cancel{background:#f1f3f6;color:#4b5563}
+.essay-feedback-submit{background:linear-gradient(90deg,#6356ff,#5e62ff);color:#fff}
 
 /* ══ 制定计划页通用 ══ */
 .plan-page{background:#f2f3f5;min-height:100vh;padding-bottom:90px}
@@ -1688,29 +1761,15 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 
 <div class="page essay-page" id="essaySmartReview">
   <div class="essay-result-stage">
-    <div class="essay-doc-scroll" id="essayDocScroll">
-      <div class="essay-doc-stage" id="essayDocStage">
-        <img alt="作文原图长图" class="essay-doc-image" src="作文长图.png">
-        <div class="essay-doc-marker line" data-marker-id="highlight-1" style="left:11%;top:18.4%;width:76%"></div>
-        <div class="essay-doc-marker line" data-marker-id="highlight-2" style="left:16%;top:35.8%;width:70%"></div>
-        <div class="essay-doc-marker line" data-marker-id="highlight-3" style="left:9%;top:77.2%;width:72%"></div>
-        <div class="essay-doc-marker circle" data-marker-id="deduct-1" style="left:70%;top:10.8%;width:9%;height:1.6%"></div>
-        <div class="essay-doc-marker circle" data-marker-id="deduct-2" style="left:53%;top:46.6%;width:8%;height:1.5%"></div>
-        <div class="essay-doc-marker circle" data-marker-id="deduct-3" style="left:25%;top:79.8%;width:8%;height:1.5%"></div>
-      </div>
-    </div>
     <div class="essay-result-topbar">
       <button aria-label="返回确认页" class="essay-result-back" onclick="backFromEssaySmartReview()" type="button">‹</button>
-      <button class="essay-result-feedback" onclick="showToast('反馈入口已预留')" type="button">反馈</button>
-    </div>
-    <div class="essay-result-sheet" id="essayResultSheet">
-      <div class="essay-result-grabber" id="essayResultGrabber"></div>
-      <div class="essay-result-tabs" id="essayResultSheetHeader">
-        <button class="essay-result-tab active" id="essayReviewTabOverall" onclick="switchEssayReviewTab('overall')" type="button">全文点评</button>
+      <div class="essay-result-tabs" id="essayResultTopTabs">
+        <button class="essay-result-tab active" id="essayReviewTabFull" onclick="switchEssayReviewTab('full')" type="button">全文精批</button>
         <button class="essay-result-tab" id="essayReviewTabNotebook" onclick="switchEssayReviewTab('notes')" type="button">批改笔记</button>
       </div>
-      <div class="essay-result-body" id="essaySmartReviewContent"></div>
+      <button class="essay-result-feedback" onclick="openEssayFeedbackModal()" type="button">反馈</button>
     </div>
+    <div class="essay-result-content" id="essaySmartReviewContent"></div>
     <div class="essay-result-actionbar">
       <button class="essay-result-mini" onclick="shareEssayReview()" type="button"><span class="essay-result-mini-ico">↻</span><span>分享</span></button>
       <button class="essay-result-mini" onclick="saveEssayReview()" type="button"><span class="essay-result-mini-ico">⇩</span><span>保存</span></button>
@@ -1884,6 +1943,34 @@ body{background:#f2f3f5;font-family:-apple-system,'PingFang SC','SF Pro Display'
 
 <div class="toast" id="toast"></div>
 <div class="modal-bg" id="modal" onclick="closeModal()"><div class="modal-box" onclick="event.stopPropagation()"><h3 id="mTitle"></h3><p id="mDesc"></p><button class="modal-btn" onclick="closeModal()">知道了</button></div></div>
+<div class="essay-feedback-modal" id="essayFeedbackModal" onclick="closeEssayFeedbackModal()">
+  <div class="essay-feedback-box" onclick="event.stopPropagation()">
+    <div class="essay-feedback-title">问题反馈</div>
+    <div class="essay-feedback-field">
+      <label class="essay-feedback-label" for="essayFeedbackType">问题类型</label>
+      <select class="essay-feedback-select placeholder" id="essayFeedbackType" onchange="handleEssayFeedbackTypeChange()" required>
+        <option value="">请选择</option>
+        <option value="功能问题反馈">功能问题反馈</option>
+        <option value="优化建议反馈">优化建议反馈</option>
+      </select>
+    </div>
+    <div class="essay-feedback-field">
+      <label class="essay-feedback-label" for="essayFeedbackDesc">问题描述</label>
+      <textarea class="essay-feedback-textarea" id="essayFeedbackDesc" maxlength="200" placeholder="请描述下您遇到的问题或建议" required></textarea>
+    </div>
+    <div class="essay-feedback-field">
+      <label class="essay-feedback-label">问题截图</label>
+      <div class="essay-feedback-upload-grid" id="essayFeedbackPreviewList">
+        <button aria-label="上传问题截图" class="essay-feedback-upload-btn" onclick="triggerEssayFeedbackUpload()" type="button">＋</button>
+      </div>
+      <input accept="image/*" id="essayFeedbackFileInput" multiple onchange="handleEssayFeedbackFiles(event)" style="display:none" type="file">
+    </div>
+    <div class="essay-feedback-actions">
+      <button class="essay-feedback-cancel" onclick="closeEssayFeedbackModal()" type="button">取消</button>
+      <button class="essay-feedback-submit" onclick="submitEssayFeedback()" type="button">提交</button>
+    </div>
+  </div>
+</div>
 <div class="plan-reward-bg" id="planRewardBg" onclick="closePlanRewardAnimation()">
   <div class="plan-reward-box" onclick="event.stopPropagation()">
     <div class="plan-reward-burst">
@@ -1914,6 +2001,91 @@ function showPage(id){
   if(id==='essaySmartReview'){
     requestAnimationFrame(function(){ensureEssayResultInteractions(true);});
   }
+}
+var essayFeedbackImages=[];
+function resetEssayFeedbackForm(){
+  essayFeedbackImages=[];
+  var type=document.getElementById('essayFeedbackType');
+  var desc=document.getElementById('essayFeedbackDesc');
+  var input=document.getElementById('essayFeedbackFileInput');
+  if(type){
+    type.value='';
+    type.classList.add('placeholder');
+  }
+  if(desc)desc.value='';
+  if(input)input.value='';
+  renderEssayFeedbackImages();
+}
+function openEssayFeedbackModal(){
+  resetEssayFeedbackForm();
+  var modal=document.getElementById('essayFeedbackModal');
+  if(modal)modal.classList.add('show');
+}
+function closeEssayFeedbackModal(){
+  var modal=document.getElementById('essayFeedbackModal');
+  if(modal)modal.classList.remove('show');
+}
+function handleEssayFeedbackTypeChange(){
+  var type=document.getElementById('essayFeedbackType');
+  if(type)type.classList.toggle('placeholder',!type.value);
+}
+function triggerEssayFeedbackUpload(){
+  if(essayFeedbackImages.length>=4)return;
+  var input=document.getElementById('essayFeedbackFileInput');
+  if(!input)return;
+  input.value='';
+  input.click();
+}
+function handleEssayFeedbackFiles(event){
+  var files=Array.prototype.slice.call((event.target&&event.target.files)||[]);
+  var remain=Math.max(0,4-essayFeedbackImages.length);
+  files.slice(0,remain).forEach(function(file){
+    if(!file.type||file.type.indexOf('image/')!==0)return;
+    var reader=new FileReader();
+    reader.onload=function(loadEvent){
+      essayFeedbackImages.push(loadEvent.target.result);
+      essayFeedbackImages=essayFeedbackImages.slice(0,4);
+      renderEssayFeedbackImages();
+    };
+    reader.readAsDataURL(file);
+  });
+  if(files.length>remain)showToast('最多上传4张图片');
+}
+function renderEssayFeedbackImages(){
+  var list=document.getElementById('essayFeedbackPreviewList');
+  if(!list)return;
+  var html=essayFeedbackImages.map(function(src,index){
+    return '<div class="essay-feedback-thumb">'+
+      '<img alt="问题截图'+(index+1)+'" src="'+src+'">'+
+      '<button aria-label="删除截图" class="essay-feedback-delete" onclick="removeEssayFeedbackImage('+index+')" type="button">×</button>'+
+    '</div>';
+  }).join('');
+  if(essayFeedbackImages.length<4){
+    html+='<button aria-label="上传问题截图" class="essay-feedback-upload-btn" onclick="triggerEssayFeedbackUpload()" type="button">＋</button>';
+  }
+  list.innerHTML=html;
+}
+function removeEssayFeedbackImage(index){
+  essayFeedbackImages.splice(index,1);
+  renderEssayFeedbackImages();
+}
+function submitEssayFeedback(){
+  var type=document.getElementById('essayFeedbackType');
+  var desc=document.getElementById('essayFeedbackDesc');
+  if(!type||!type.value){
+    showToast('请选择问题类型');
+    return;
+  }
+  if(!desc||!desc.value.trim()){
+    showToast('请填写问题描述');
+    return;
+  }
+  if(essayFeedbackImages.length<1){
+    showToast('请上传问题截图');
+    return;
+  }
+  closeEssayFeedbackModal();
+  showToast('已成功提交，感谢您的反馈～');
 }
 
 // ── 登录 / 引导 / 首页 → 计划 ──
@@ -1988,7 +2160,7 @@ var essayFinalScore=48;
 var essayFinalCategory='二类文';
 var essayBaseBand='二档';
 var essayBaseScore=43;
-var essayReviewTab='overall';
+var essayReviewTab='full';
 var activeEssayRecordId='essay_3';
 var activeHomeNav='discover';
 var essayRecords=[
@@ -2452,7 +2624,7 @@ function startNewEssayTask(){
   essayPreviewActiveKey='topic';
   essayCaptureShots={topic:null,essay:[]};
   essaySelectedPhotos=[];
-  essayReviewTab='overall';
+  essayReviewTab='full';
   essayFinalScore=48;
   essayFinalCategory='二类文';
   essayBaseBand='二档';
@@ -3049,56 +3221,105 @@ function renderEssayReviewLegend(){
 }
 function getEssayOverallReviewHtml(){
   return ''+
-    '<div class="essay-result-module score">'+
-      '<div class="essay-result-module-title">作文得分</div>'+
-      '<div class="essay-result-score-value">46分（三类文）</div>'+
-    '</div>'+
-    '<div class="essay-result-module">'+
-      '<div class="essay-result-module-title">作文审题</div>'+
-      '<div class="essay-result-copy">你的作文审题符合要求，对“张力与缩力”覆盖全面，对“相辅相成”也点明到位。但对“内外平衡”使用了“张缩有度”等替代表述，未直接点出关键词，导致该部分论述略显模糊。目前处于二档。若要提升至一档，建议明确阐释“内外平衡”的内涵，可通过增加具体事例或哲理分析来深化，同时语言要更贴合原题关键词，避免因替代表述过多而削弱契合度。</div>'+
-    '</div>'+
-    '<div class="essay-result-module">'+
-      '<div class="essay-result-module-title">作文立意</div>'+
-      '<div class="essay-result-copy">你的作文立意明确，围绕“张力与缩力”的辩证关系展开，能从艺术和生活两个角度分析。但例子分析较浅，如《哪吒2》未深入探讨二者的互动机制；整体论证缺乏层次和递进，思想深度不足。目前二档。想升一档，需挖掘深层规律，加强逻辑关联，提升论证的说服力。</div>'+
-    '</div>'+
-    '<div class="essay-video-note">—— 点评内容由AI生成，仅供参考 ——</div>';
+    '<div class="essay-full-review-layout">'+
+      '<div class="essay-full-review-doc">'+
+        '<div class="essay-doc-scroll" id="essayDocScroll">'+
+          '<div class="essay-doc-stage" id="essayDocStage">'+
+            '<div class="essay-doc-stack">'+
+              '<div class="essay-doc-panel" id="essayDocPanel1">'+
+                '<img alt="作文精批上半部分" class="essay-doc-image" src="突破1.png">'+
+                '<img alt="44分" class="essay-doc-score-badge" src="44分.png">'+
+              '</div>'+
+              '<div class="essay-doc-panel" id="essayDocPanel2">'+
+                '<img alt="作文精批下半部分" class="essay-doc-image" src="突破2.png">'+
+              '</div>'+
+            '</div>'+
+            '<div class="essay-doc-anchor" data-anchor-id="deduct-1" style="top:9%;"></div>'+
+            '<div class="essay-doc-anchor" data-anchor-id="point-1" style="top:25%;"></div>'+
+            '<div class="essay-doc-anchor" data-anchor-id="highlight-1" style="top:42%;"></div>'+
+            '<div class="essay-doc-anchor" data-anchor-id="deduct-2" style="top:61%;"></div>'+
+            '<div class="essay-doc-anchor" data-anchor-id="point-2" style="top:76%;"></div>'+
+            '<div class="essay-doc-anchor" data-anchor-id="highlight-2" style="top:89%;"></div>'+
+            '<div class="essay-doc-anchor" data-anchor-id="highlight-3" style="top:95%;"></div>'+
+            '<div class="essay-doc-anchor" data-anchor-id="point-3" style="top:97%;"></div>'+
+            '<div class="essay-doc-anchor" data-anchor-id="deduct-3" style="top:99%;"></div>'+
+          '</div>'+
+        '</div>'+
+      '</div>'+
+      '<div class="essay-full-review-side">'+
+        '<div class="essay-precision-card blue">'+
+          '<div class="essay-precision-title"><span class="essay-precision-badge blue compact">审题</span></div>'+
+          '<div class="essay-precision-copy">作文紧扣材料，准确理解“锁链”意象，围绕压力、恐惧与旧观念展开，立意清晰。事例充分，论证有力。不足在于对“顺从”与“反抗”的对比分析偏弱，缺乏对“顺从”的具体呈现，使论证角度略显单一。部分表达重复，逻辑衔接可加强。整体审题准确，思辨意识较强。</div>'+
+          '<div class="essay-precision-tags">'+
+            '<button class="essay-precision-tag blue" onclick="focusEssayDocMarker(&quot;point-1&quot;)" type="button">锁链</button>'+
+            '<button class="essay-precision-tag blue" onclick="focusEssayDocMarker(&quot;point-2&quot;)" type="button">顺从与反抗</button>'+
+            '<button class="essay-precision-tag blue" onclick="focusEssayDocMarker(&quot;point-3&quot;)" type="button">自我突破</button>'+
+          '</div>'+
+        '</div>'+
+        '<div class="essay-precision-card blue">'+
+          '<div class="essay-precision-title"><span class="essay-precision-badge blue compact">立意</span></div>'+
+          '<div class="essay-precision-copy">作文紧扣材料，围绕“锁链”与“突破”展开，立意明确，有较强问题意识。从观念、压力、恐惧三个层面切入，选材有代表性。不足在于论证多为例证堆砌，缺乏深入剖析，论述较平面；部分表述笼统，逻辑支撑不足。整体有思辨潜力，若能加强因果分析与层次递进，将更有深度和说服力。</div>'+
+          '<div class="essay-precision-tags">'+
+            '<button class="essay-precision-tag blue" onclick="focusEssayDocMarker(&quot;point-1&quot;)" type="button">1</button>'+
+            '<button class="essay-precision-tag blue" onclick="focusEssayDocMarker(&quot;point-2&quot;)" type="button">2</button>'+
+            '<button class="essay-precision-tag blue" onclick="focusEssayDocMarker(&quot;point-3&quot;)" type="button">3</button>'+
+          '</div>'+
+        '</div>'+
+        '<div class="essay-precision-card yellow">'+
+          '<div class="essay-precision-title stack"><span class="essay-precision-badge yellow">加分</span><span class="essay-precision-subtitle">素材运用丰富、新颖</span></div>'+
+          '<div class="essay-precision-copy">使用新文化运动（历史）、原子弹研发（现代）、躺平文化（当下）三类事实论据，覆盖“古今”维度，素材切题但不新颖，故加1分。</div>'+
+          '<div class="essay-precision-tags">'+
+            '<button class="essay-precision-tag yellow" onclick="focusEssayDocMarker(&quot;highlight-1&quot;)" type="button">1</button>'+
+            '<button class="essay-precision-tag yellow" onclick="focusEssayDocMarker(&quot;highlight-2&quot;)" type="button">2</button>'+
+            '<button class="essay-precision-tag yellow" onclick="focusEssayDocMarker(&quot;highlight-3&quot;)" type="button">3</button>'+
+          '</div>'+
+        '</div>'+
+        '<div class="essay-precision-card red">'+
+          '<div class="essay-precision-title"><span class="essay-precision-badge red compact">扣分</span></div>'+
+          '<div class="essay-precision-copy">存在2处错别字和2处病句，语言流畅性略有不足，扣2分。</div>'+
+          '<div class="essay-precision-tags">'+
+            '<button class="essay-precision-tag red" onclick="focusEssayDocMarker(&quot;deduct-1&quot;)" type="button">陈归</button>'+
+            '<button class="essay-precision-tag red" onclick="focusEssayDocMarker(&quot;deduct-2&quot;)" type="button">开心</button>'+
+          '</div>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
 }
 function getEssayNotebookHtml(){
   return ''+
+    '<div class="essay-result-module image-only">'+
+      '<img alt="得分卡片" class="essay-result-card-image" src="得分卡片2.png">'+
+    '</div>'+
     '<div class="essay-result-module">'+
       '<div class="essay-result-module-title">起评分<span class="essay-result-module-badge">43分（二档）</span></div>'+
-      '<div class="essay-result-copy">该作文符合高考“符合题意”与“中心明确”的二档标准。文章抓住“张力与缩力”的核心概念，从艺术创作与生活两个角度展开论述，体现出对题意的理解。但整体分析较为表面，如对齐白石《虾》与《哪吒2》的例证未能深入揭示张力与缩力之间的相互作用与平衡机制，论证深度不足。结构趋于平面化，段落间缺乏递进关系，例子关联不够紧密。若能在论点展开与逻辑递进方面加强，文章质量将进一步提升。</div>'+
+      '<div class="essay-note-rule-wrap"><img alt="评分规则图" class="essay-note-rule-image" src="规则图.png"></div>'+
+      '<div class="essay-result-copy">该作文对应高考作文等级评分标准中的<strong>二档</strong>，<strong>符合“符合题意”与“中心明确”的要求</strong>。文章能够围绕“突破锁链，找寻自我”这一主题展开论述，<strong>选材贴合题意，结构较为清晰</strong>。然而，论证深度略显不足，对“锁链”的象征意义及其社会影响分析不够透彻，例证虽恰当但缺乏深入挖掘。同时，段落之间的逻辑递进关系较弱，整体呈现平面化特征。若能在思考深度与层次递进方面进一步加强，文章将更为出色。</div>'+
     '</div>'+
     '<div class="essay-result-module">'+
-      '<div class="essay-result-module-title">亮点<span class="essay-result-module-badge">+4分</span></div>'+
-      '<div class="essay-result-copy">文章能够围绕“张力与缩力”的核心关系组织内容，并尝试从艺术作品、影视创作和生活态度三个角度展开。尤其是对“张力带来冲击、缩力形成克制”的表达较集中，个别句子能形成较强的观点提示，说明你已经有意识地在用关键词串联全文。</div>'+
-      '<div class="essay-note-button-row">'+
-        '<button class="essay-note-marker-btn highlight" onclick="focusEssayDocMarker(&quot;highlight-1&quot;)" type="button">1</button>'+
-        '<button class="essay-note-marker-btn highlight" onclick="focusEssayDocMarker(&quot;highlight-2&quot;)" type="button">2</button>'+
-        '<button class="essay-note-marker-btn highlight" onclick="focusEssayDocMarker(&quot;highlight-3&quot;)" type="button">3</button>'+
-      '</div>'+
+      '<div class="essay-result-module-title">亮点<span class="essay-result-module-badge warning">+2分</span></div>'+
+      '<div class="essay-result-copy">在事实论据的选取上，该文<strong>涵盖了“古今”两个时间维度</strong>：以新文化运动作为历史层面的代表，以原子弹研发作为现代层面的例证，并结合当下的“躺平文化”展开论述。<strong>三类论据均切合题意</strong>，能够有效支撑“突破锁链”这一核心立意。然而，所选素材较为常见，缺乏新颖性与独特视角，未能体现出较强的选材意识。综合考虑素材的贴合度与创新性，<strong>酌情加2分</strong>。</div>'+
+      '<div class="essay-note-quote"><strong>好素材1：</strong>陈独秀李大钊等人主张“开心民智”“民主”“科学”摒弃归观念，开始了新文化运动。</div>'+
+      '<div class="essay-note-quote"><strong>好素材2：</strong>随着一朵蘑菇云的产生，震惊世界。钱学森、邓稼先等人带领中国突破外界的锁链，正式踏上强国之路。</div>'+
+      '<div class="essay-note-quote"><strong>好素材3：</strong>而今现在网络上年轻人之间充斥着“摆烂”“躺平”之风，漫天飞舞的我不行、算了吧。</div>'+
     '</div>'+
     '<div class="essay-result-module">'+
-      '<div class="essay-result-module-title">扣分点<span class="essay-result-module-badge">-1分</span></div>'+
-      '<div class="essay-result-copy">局部表达存在错别字、词语搭配不够准确和概念替换过多的问题。例如个别字形书写容易被识别为错字，部分句子用“张缩有度”替代“内外平衡”后，与题干关键词的对应关系变弱。这类问题虽不影响整体立意，但会削弱卷面清晰度和论证严谨性。</div>'+
-      '<div class="essay-note-button-row">'+
-        '<button class="essay-note-marker-btn deduct" onclick="focusEssayDocMarker(&quot;deduct-1&quot;)" type="button">1</button>'+
-        '<button class="essay-note-marker-btn deduct" onclick="focusEssayDocMarker(&quot;deduct-2&quot;)" type="button">2</button>'+
-        '<button class="essay-note-marker-btn deduct" onclick="focusEssayDocMarker(&quot;deduct-3&quot;)" type="button">3</button>'+
-      '</div>'+
+      '<div class="essay-result-module-title">扣分点<span class="essay-result-module-badge danger">-1分</span></div>'+
+      '<div class="essay-result-copy">在语言表达方面，该文<strong>存在两处错别字和两处病句</strong>，整体流畅性受到一定影响，故酌情扣减1分。具体而言，“陈旧”被误写为“<strong style="color:#d92d20">陈归</strong>”，“开启民智”被误写为“<strong style="color:#d92d20">开心民智</strong>”，此类错误属于基础性语言失误，反映出在语言规范意识方面尚有提升空间。虽不影响整体立意理解，但在考场作文中应尽量避免，以确保表达准确、严谨。建议在日常写作中加强字词辨析与语句检查，减少此类简单错误的发生。</div>'+
+      '<div class="essay-note-emphasis"><span>陈归</span><span>开心民智</span></div>'+
     '</div>'+
     '<div class="essay-video-note">—— 批改笔记由AI生成，仅供参考 ——</div>';
 }
 function renderEssaySmartReview(){
-  var overallTab=document.getElementById('essayReviewTabOverall');
+  var fullTab=document.getElementById('essayReviewTabFull');
   var notebookTab=document.getElementById('essayReviewTabNotebook');
   var content=document.getElementById('essaySmartReviewContent');
-  if(overallTab)overallTab.classList.toggle('active',essayReviewTab==='overall');
+  if(fullTab)fullTab.classList.toggle('active',essayReviewTab==='full');
   if(notebookTab)notebookTab.classList.toggle('active',essayReviewTab==='notes');
   if(content){
-    content.innerHTML=essayReviewTab==='notes'?getEssayNotebookHtml():getEssayOverallReviewHtml();
+    content.innerHTML=essayReviewTab==='notes'
+      ?'<div class="essay-notebook-scroll">'+getEssayNotebookHtml()+'</div>'
+      :getEssayOverallReviewHtml();
   }
-  requestAnimationFrame(function(){ensureEssayResultInteractions();});
 }
 function shareEssayReview(){
   showToast('分享入口已预留');
@@ -3205,19 +3426,29 @@ function handleEssayResultResize(){
   }
 }
 function focusEssayDocMarker(markerId){
+  if(essayReviewTab!=='full'){
+    essayReviewTab='full';
+    renderEssaySmartReview();
+    requestAnimationFrame(function(){focusEssayDocMarker(markerId);});
+    return;
+  }
+  var anchor=document.querySelector('.essay-doc-anchor[data-anchor-id="'+markerId+'"]');
   var marker=document.querySelector('.essay-doc-marker[data-marker-id="'+markerId+'"]');
   var scroll=document.getElementById('essayDocScroll');
-  var stage=document.getElementById('essayDocStage');
-  if(!(marker&&scroll&&stage))return;
-  var sheetTop=essayResultSheetTop||getEssayResultSheetSnapPoints().mid;
-  var markerCenter=marker.offsetTop+(marker.offsetHeight/2);
-  var targetTop=Math.max(0,markerCenter-(sheetTop*.42));
-  scroll.scrollTo({top:targetTop,behavior:'smooth'});
-  marker.classList.remove('flash');
-  void marker.offsetWidth;
-  marker.classList.add('flash');
-  clearTimeout(marker._flashTimer);
-  marker._flashTimer=setTimeout(function(){marker.classList.remove('flash');},1900);
+  var target=anchor||marker;
+  if(!(target&&scroll))return;
+  var targetTop=Math.max(0,target.offsetTop-(scroll.clientHeight*.18));
+  if(scroll.scrollHeight>scroll.clientHeight+10){
+    scroll.scrollTo({top:targetTop,behavior:'smooth'});
+  }
+  var flashTarget=marker||target.closest('.essay-doc-panel');
+  if(flashTarget){
+    flashTarget.classList.remove('flash');
+    void flashTarget.offsetWidth;
+    flashTarget.classList.add('flash');
+    clearTimeout(flashTarget._flashTimer);
+    flashTarget._flashTimer=setTimeout(function(){flashTarget.classList.remove('flash');},1900);
+  }
 }
 function clearEssayLoadingTimer(){
   if(essayLoadingTimer){
@@ -3358,7 +3589,7 @@ function openEssayLoading(){
     renderEssayZone();
     renderEssayRecordsPage();
     clearEssayLoadingTimer();
-    essayReviewTab='overall';
+    essayReviewTab='full';
     renderEssaySmartReview();
     showPage('essaySmartReview');
     showToast('已生成全文点评和批改笔记');
@@ -3368,8 +3599,7 @@ function backFromEssaySmartReview(){
   showPage('essayCapturePreview');
 }
 function switchEssayReviewTab(tab){
-  if(tab==='full')tab='notes';
-  essayReviewTab=tab;
+  essayReviewTab=tab==='notes'?'notes':'full';
   renderEssaySmartReview();
 }
 function openEssaySmartReport(){
@@ -3386,7 +3616,7 @@ function retakeEssayFromReview(){
   essayPreviewActiveKey='topic';
   essayCaptureShots={topic:null,essay:[]};
   essaySelectedPhotos=[];
-  essayReviewTab='overall';
+  essayReviewTab='full';
   renderEssayCapturePage();
   renderEssayCapturePreviewPage();
   renderEssaySmartReview();
